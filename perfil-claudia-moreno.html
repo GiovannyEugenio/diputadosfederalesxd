@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del Legislador - LXVI Legislatura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script>
+        // --- Configuración de Tailwind (igual que en index.html) ---
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'guinda': '#8B1538', 'guinda-dark': '#6B1028', 'guinda-light': '#A91B47', 'dorado': '#D4AF37', 'dorado-light': '#E8C547', 'dorado-dark': '#B8941F', 'cream': '#FDF8F0', 'pearl': '#F8F6F3' },
+                    fontFamily: { 'serif': ['Playfair Display', 'serif'], 'sans': ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* --- Todos los estilos CSS de tu index.html van aquí --- */
+        body {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .elegant-gradient {
+            background: linear-gradient(135deg, #8B1538 0%, #6B1028 50%, #8B1538 100%);
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .elegant-card {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transform: translateY(0px);
+        }
+
+        .elegant-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 80px rgba(139, 21, 56, 0.2);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #D4AF37, #E8C547);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .elegant-btn {
+            background: linear-gradient(135deg, #8B1538, #A91B47);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .elegant-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(139, 21, 56, 0.4);
+        }
+
+        .gold-btn {
+            background: linear-gradient(135deg, #D4AF37, #E8C547);
+            color: #8B1538;
+            font-weight: 600;
+        }
+
+        .gold-btn:hover {
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Estilo para links en las listas de iniciativas */
+        .list-link {
+            color: #8B1538;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .list-link:hover {
+            color: #D4AF37;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body class="bg-cream">
+
+    <header class="relative">
+        <div class="header-carousel-container relative elegant-gradient overflow-hidden" style="height: 250px;">
+
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-center h-full">
+
+                <div class="text-center text-white">
+
+                    <h1 class="font-serif text-4xl md:text-5xl font-bold">Perfiles Legislativos</h1>
+
+                    <p class="text-lg md:text-xl font-light">LXVI Legislatura de Baja California</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <nav class="glass-effect sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="flex justify-center py-6">
+                    <a href="index.html" class="nav-link text-guinda hover:text-dorado font-medium px-3 lg:px-4 py-2">
+                        Inicio
+                    </a>
+                    <a href="index.html" class="nav-link text-guinda hover:text-dorado font-medium px-3 lg:px-4 py-2">
+                        Diputadas
+                    </a>
+                    <a href="index.html" class="nav-link text-guinda hover:text-dorado font-medium px-3 lg:px-4 py-2">
+                        Diputados
+                    </a>
+                    <a href="index.html" class="nav-link text-guinda hover:text-dorado font-medium px-3 lg:px-4 py-2">
+                        Boletines
+                    </a>
+                    <a href="index.html" class="nav-link text-guinda hover:text-dorado font-medium px-3 lg:px-4 py-2">
+                        Eventos
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="py-12 md:py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
+
+                    <div class="lg:col-span-1 space-y-6">
+                        <div class="elegant-card bg-white p-4 rounded-2xl">
+                            <img src="static/claudia.png" alt="Fotografía de la Diputada Claudia Lisbeth Moreno Ramírez"
+                                class="rounded-xl w-full">
+                        </div>
+
+                        <div class="elegant-card bg-white p-6 rounded-2xl">
+                            <h3 class="font-serif text-xl font-bold text-guinda mb-4">Contacto</h3>
+                            <div class="space-y-3 text-gray-700">
+                                <p>
+                                    <strong class="text-guinda font-semibold">Ubicación:</strong> Edificio B, 3er. Piso
+                                </p>
+                                <p>
+                                    <strong class="text-guinda font-semibold">Curul:</strong> M-497
+                                </p>
+                                <p>
+                                    <strong class="text-guinda font-semibold">Teléfono:</strong> (55) 5036 0000, Ext. 61176
+                                </p>
+                                <p>
+                                    <strong class="text-guinda font-semibold">Correo:</strong>
+                                    <a href="mailto:lisbeth.moreno@diputados.gob.mx" class="hover:text-dorado-dark transition-colors">lisbeth.moreno@diputados.gob.mx</a>
+                                </p>
+                                <p>
+                                    <strong class="text-guinda font-semibold">Suplente:</strong> Cecilia García Ovalles
+                                </p>
+                            </div>
+                            </div>
+                    </div>
+
+                    <div class="lg:col-span-2">
+                        <div class="elegant-card bg-white p-8 md:p-10 rounded-2xl">
+                            <h1 class="font-serif text-4xl md:text-5xl font-bold text-guinda mb-2">Lisbeth
+                                Moreno Ramírez</h1>
+                            <p class="text-lg text-dorado-dark font-medium mb-8">Diputada Federal por Baja California
+                            </p>
+
+                            <div class="flex flex-wrap gap-x-6 gap-y-2 text-gray-700 mt-4 mb-8">
+                                <span class="inline-flex items-center font-medium">
+                                    <img src="static\morena.png" class="h-5 w-auto mr-2" alt="Logo Morena">
+                                </span>
+                                <span class="font-medium"><strong>Distrito:</strong> 3 (Ensenada)</span>
+                                <span class="font-medium"><strong>Principio de elección:</strong> Mayoría Relativa</span>
+                                <span class="font-medium"><strong>Ciudad:</strong> Ensenada</span>
+                                <span class="font-medium"><strong>Nacimiento:</strong> 1 de noviembre de 1990</span>
+                            </div>
+                            <div>
+                                <h2
+                                    class="font-serif text-2xl font-bold text-guinda border-b border-dorado-light pb-2 mb-4">
+                                    Currículum</h2>
+                                
+                                <h3 class="font-semibold text-guinda mt-4">Formación Académica</h3>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1 mt-2">
+                                    <li>Licenciatura. (en curso)</li>
+                                </ul>
+                                
+                                <h3 class="font-semibold text-guinda mt-4">Trayectoria Política</h3>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1 mt-2">
+                                    <li>2010-2019 – Secretaria de Jóvenes del Comité Directivo Municipal del Partido Encuentro Social (PES) en Baja California.</li>
+                                    <li>2010-2019 – Secretaria de Finanzas del Comité Directivo Municipal del Partido Encuentro Social (PES) en Baja California.</li>
+                                    <li>2019-2024 – Integrante activa del partido Movimiento Regeneración Nacional (Morena).</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mt-10">
+                                <h2
+                                    class="font-serif text-2xl font-bold text-guinda border-b border-dorado-light pb-2 mb-4">
+                                    Actividad Legislativa</h2>
+                                
+                                <h3 class="font-semibold text-guinda mt-4">Comisiones Ordinarias</h3>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1 mt-2">
+                                    <li>Secretaria de la Comisión de Infraestructura</li>
+                                    <li>Integrante de la Comisión de Presupuesto y Cuenta Pública</li>
+                                    <li>Integrante de la Comisión de Turismo</li>
+                                </ul>
+                                
+                                <h3 class="font-semibold text-guinda mt-4">Subcomisiones</h3>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1 mt-2">
+                                    <li>Subcomisión de Presupuesto con Perspectiva de Género</li>
+                                </ul>
+
+                                <h3 class="font-semibold text-guinda mt-4">Iniciativas Presentadas</h3>
+                                <ol class="list-decimal list-inside text-gray-700 space-y-2 mt-2">
+                                    <li>
+                                        Proyecto de decreto por el que se expide la Ley General de Erradicación del Asbesto. (16/10/2024)
+                                    </li>
+                                    <li>
+                                        Proyecto de decreto que expide la Ley General que Asegura el Respeto y la Implementación de los Derechos de los Pueblos y Comunidades Indígenas y Afromexicanas. (11/12/2024)
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="index.html" class="elegant-btn gold-btn">
+                        ← Volver
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+ <footer class="bg-guinda-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+            
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start border-b border-white/20 pb-8 mb-8">
+                
+                <div class="flex items-start space-x-4 mb-6 md:mb-0 max-w-sm">
+                    <div class="bg-white rounded-lg p-2 flex-shrink-0 mt-1">
+                        <img src="static/escudo.png" alt="Escudo Cámara de Diputados" class="w-14 h-14">
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-2xl font-extrabold leading-tight">LXVI Legislatura</h3>
+                        <p class="font-bold text-lg text-dorado-light">Baja California</p>
+                        <p class="text-xs text-gray-300 mt-2">
+                            Representando con honor y compromiso los intereses de Baja California en el Congreso de la Unión.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-3 flex items-center justify-center w-28 h-28 flex-shrink-0">
+                    <img src="static/morena.png" alt="Logo de Morena" class="object-contain w-full h-full">
+                </div>
+
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                
+                <div>
+                    <h4 class="font-bold text-sm text-dorado-light mb-4 uppercase tracking-wider">Enlaces Rápidos</h4>
+                    <div class="space-y-2">
+                        <a href="index.html#inicio" class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Inicio
+                        </a>
+                        <a href="index.html#diputadas" class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Diputadas y Diputados
+                        </a>
+                        <a href="index.html#boletines" class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Boletines
+                        </a>
+                        <a href="index.html#eventos" class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Eventos
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-sm text-dorado-light mb-4 uppercase tracking-wider">Sitios de Interés</h4>
+                    <div class="space-y-2">
+                        <a href="https://www.diputados.gob.mx/" target="_blank" rel="noopener noreferrer"
+                            class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Cámara de Diputados
+                        </a>
+                        <a href="http://sil.gobernacion.gob.mx/" target="_blank" rel="noopener noreferrer"
+                            class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Congreso de la Unión
+                        </a>
+                        <a href="https://www.gob.mx/" target="_blank" rel="noopener noreferrer"
+                            class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Gobierno de México
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-span-2 md:col-span-1">
+                    <h4 class="font-bold text-sm text-dorado-light mb-4 uppercase tracking-wider">Sede Legislativa</h4>
+                    <div class="space-y-1 text-sm text-gray-300">
+                        <p>Av. Congreso de la Unión No. 66</p>
+                        <p>Col. El Parque, C.P. 15960</p>
+                        <p>Alcaldía Venustiano Carranza, CDMX</p>
+                        <p class="font-semibold pt-2">Tel: (55) 5036 0000</p>
+                    </div>
+                </div>
+
+                <div class="col-span-2 md:col-span-1">
+                    <h4 class="font-bold text-sm text-dorado-light mb-4 uppercase tracking-wider">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" aria-label="Síguenos en X" class="text-gray-300 hover:text-dorado-light transition-colors">
+                            <span class="icon-placeholder"></span> 
+                        </a>
+                        <a href="#" aria-label="Síguenos en Facebook" class="text-gray-300 hover:text-dorado-light transition-colors">
+                            <span class="icon-placeholder"></span> 
+                        </a>
+                        <a href="#" aria-label="Síguenos en Instagram" class="text-gray-300 hover:text-dorado-light transition-colors">
+                            <span class="icon-placeholder"></span> 
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center pt-8 mt-8 border-t border-white/20">
+                <p class="text-xs text-gray-400">
+                    &copy; 2025 Diputados Federales de Baja California - LXVI Legislatura. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // La funcionalidad de fetch del footer ya no es necesaria
+        // ya que el código fue integrado directamente.
+        
+        // Simplemente se mantiene este script para evitar errores de consola
+        // si se ejecuta un fetch en el futuro o si existían otras funciones aquí.
+    </script>
+</body>
+
+</html>

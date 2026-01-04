@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil del Legislador - LXVI Legislatura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script>
+        // --- Configuración de Tailwind (igual que en index.html) ---
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { 'guinda': '#8B1538', 'guinda-dark': '#6B1028', 'guinda-light': '#A91B47', 'dorado': '#D4AF37', 'dorado-light': '#E8C547', 'dorado-dark': '#B8941F', 'cream': '#FDF8F0', 'pearl': '#F8F6F3' },
+                    fontFamily: { 'serif': ['Playfair Display', 'serif'], 'sans': ['Inter', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* --- Todos los estilos CSS de tu index.html van aquí --- */
+        body {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .elegant-gradient {
+            background: linear-gradient(135deg, #8B1538 0%, #6B1028 50%, #8B1538 100%);
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .elegant-card {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transform: translateY(0px);
+        }
+
+        .elegant-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 80px rgba(139, 21, 56, 0.2);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #D4AF37, #E8C547);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .elegant-btn {
+            background: linear-gradient(135deg, #8B1538, #A91B47);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .elegant-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(139, 21, 56, 0.4);
+        }
+
+        .gold-btn {
+            background: linear-gradient(135deg, #D4AF37, #E8C547);
+            color: #8B1538;
+            font-weight: 600;
+        }
+
+        .gold-btn:hover {
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Estilo para links en las listas de iniciativas */
+        .list-link {
+            color: #8B1538;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .list-link:hover {
+            color: #D4AF37;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body class="bg-cream">
+
+    <header class="relative">
+         <div class="header-carousel-container relative elegant-gradient overflow-hidden" style="height: 250px;">
+
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-center h-full">
+
+                <div class="text-center text-white">
+
+                    <h1 class="font-serif text-4xl md:text-5xl font-bold">Perfiles Legislativos</h1>
+
+                    <p class="text-lg md:text-xl font-light">LXVI Legislatura de Baja California</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <nav class="glass-effect sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                <div class="flex justify-center py-6">
+                    <a href="index.html" class="nav-link text-guinda hover:text-dorado font-medium px-3 lg:px-4 py-2">
+                        Inicio
+                    </a>
+                    <a href="index.html" class="nav-link text-guinda hover:text-dorado font-medium px-3 lg:px-4 py-2">
+                        Diputadas
+                    </a>
+                    <a href="index.html" class="nav-link text-guinda hover:text-dorado font-medium px-3 lg:px-4 py-2">
+                        Diputados
+                    </a>
+                    <a href="index.html" class="nav-link text-guinda hover:text-dorado font-medium px-3 lg:px-4 py-2">
+                        Boletines
+                    </a>
+                    <a href="index.html" class="nav-link text-guinda hover:text-dorado font-medium px-3 lg:px-4 py-2">
+                        Eventos
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="py-12 md:py-16">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6">
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12">
+
+                    <div class="lg:col-span-1 space-y-6">
+                        <div class="elegant-card bg-white p-4 rounded-2xl">
+                            <img src="static/alma_laura.png" alt="Fotografía de la Diputada Alma Laura Ruiz Lopez"
+                                class="rounded-xl w-full">
+                        </div>
+
+                        <div class="elegant-card bg-white p-6 rounded-2xl">
+                            <h3 class="font-serif text-xl font-bold text-guinda mb-4">Contacto y Redes</h3>
+                            <div class="space-y-3">
+                                <a href="mailto:alma.ruiz@diputados.gob.mx"
+                                    class="flex items-center text-gray-700 hover:text-dorado-dark transition-colors">
+                                    <svg class="w-5 h-5 mr-3 text-guinda" fill="currentColor" viewBox="0 0 20 20">
+                                        <path
+                                            d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z">
+                                        </path>
+                                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                                    </svg>
+                                    <span>alma.ruiz@diputados.gob.mx</span>
+                                </a>
+                                <a href="https://x.com/lauraruiz4t" target="_blank" rel="noopener noreferrer"
+                                    class="flex items-center text-gray-700 hover:text-dorado-dark transition-colors">
+                                    <svg class="w-5 h-5 mr-3 text-guinda" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                                        </path>
+                                    </svg>
+                                    <span>@LauraRuiz4T</span>
+                                </a>
+
+                                <a href="https://www.instagram.com/lauraruiz4t/" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="flex items-center text-gray-700 hover:text-dorado-dark transition-colors">
+                                    <svg class="w-5 h-5 mr-3 text-guinda" fill="currentColor" viewBox="0 0 24 24">
+                                        <path
+                                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.85s-.011 3.584-.069 4.85c-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07s-3.584-.012-4.85-.07c-3.252-.149-4.771-1.699-4.919-4.92-.058-1.265-.069-1.644-.069-4.849s.011-3.584.069-4.85c.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.85-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948s.014 3.667.072 4.947c.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072s3.667-.014 4.947-.072c4.358-.2 6.78-2.618 6.98-6.98.059-1.281.073-1.689.073-4.948s-.014-3.667-.072-4.947c-.2-4.358-2.618-6.78-6.98-6.98C15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z">
+                                        </path>
+                                    </svg>
+                                    <span>Instagram</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:col-span-2">
+                        <div class="elegant-card bg-white p-8 md:p-10 rounded-2xl">
+                            <h1 class="font-serif text-4xl md:text-5xl font-bold text-guinda mb-2">Alma Angelica Ruiz Esparza
+                            </h1>
+                            <p class="text-lg text-dorado-dark font-medium mb-8">Diputada Federal por Baja California
+                            </p>
+
+                            <div class="flex flex-wrap gap-x-6 gap-y-2 text-gray-700 mt-4 mb-8">
+                                <span class="inline-flex items-center font-medium">
+                                    <img src="static\morena.png" class="h-5 w-auto mr-2" alt="Logo Morena">
+                                </span>
+                                <span class="font-medium"><strong>Distrito:</strong> 1 (Mexicali)</span>
+                                <span class="font-medium"><strong>Principio de elección:</strong> Mayoría Relativa</span>
+                                <span class="font-medium"><strong>Entidad:</strong> México</span>
+                                <span class="font-medium"><strong>Nacimiento:</strong> 22 de enero de 1992</span>
+                            </div>
+                            <div>
+                                <h2
+                                    class="font-serif text-2xl font-bold text-guinda border-b border-dorado-light pb-2 mb-4">
+                                    Currículum</h2>
+                                
+                                <h3 class="font-semibold text-guinda mt-4">Formación Académica</h3>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1 mt-2">
+                                    <li>2018 – Licenciatura en Ciencias Políticas y Sociales, Universidad Autónoma de Baja California.</li>
+                                </ul>
+                                
+                                <h3 class="font-semibold text-guinda mt-4">Trayectoria Política</h3>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1 mt-2">
+                                    <li>2020-2021 – Coordinadora estatal de Morena en defensa del voto, distrito 01 local, Baja California.</li>
+                                    <li>2017 – 2018 – Coordinadora Distrital de defensa del voto, distrito 01 federal, Morena.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="mt-10">
+                                <h2
+                                    class="font-serif text-2xl font-bold text-guinda border-b border-dorado-light pb-2 mb-4">
+                                    Actividad Legislativa</h2>
+                                
+                                <h3 class="font-semibold text-guinda mt-4">Comisiones Ordinarias</h3>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1 mt-2">
+                                    <li>Secretaria de la Comisión de Desarrollo Urbano y Ordenamiento Territorial</li>
+                                    <li>Integrante de la Comisión de Vivienda</li>
+                                    <li>Integrante de la Comisión de Bienestar</li>
+                                </ul>
+
+                                <h3 class="font-semibold text-guinda mt-4">Grupo de Amistad</h3>
+                                <ul class="list-disc list-inside text-gray-700 space-y-1 mt-2">
+                                    <li>Reino de Noruega</li>
+                                    <li>República de Honduras</li>
+                                </ul>
+
+                                <h3 class="font-semibold text-guinda mt-4">Iniciativas Presentadas</h3>
+                                <ol class="list-decimal list-inside text-gray-700 space-y-2 mt-2">
+                                    <li>
+                                        Proyecto de decreto (Ley General de Erradicación del Asbesto). (16/10/2024)
+                                    </li>
+                                    <li>
+                                        Proyecto de decreto (Ley General... Derechos de los Pueblos y Comunidades Indígenas...). (11/12/2024)
+                                    </li>
+                                    <li>
+                                        Proyecto de decreto (Inscripción en letras de oro... "Frida Kahlo"). (12/02/2025)
+                                    </li>
+                                    <li>
+                                        Proyecto de decreto (Reforma a la Ley de Asentamientos Humanos...). (12/02/2025)
+                                        <a href="http://sil.gobernacion.gob.mx/Archivos/Documentos/2025/02/asun_4834725_20250212_1739381317.pdf" class="list-link" target="_blank" rel="noopener noreferrer">[Ver]</a>
+                                    </li>
+                                    <li>
+                                        Proyecto de decreto (Reforma al artículo 4o. de la Constitución... derecho a la salud...). (01/04/2025)
+                                        <a href="http://sil.gobernacion.gob.mx/Archivos/Documentos/2025/04/asun_4868150_20250401_1743607911.pdf" class="list-link" target="_blank" rel="noopener noreferrer">[Ver]</a>
+                                    </li>
+                                    <li>
+                                        Proyecto de decreto (Reforma al Código Nacional de Procedimientos Penales). (30/04/2025)
+                                        <a href="http://sil.gobernacion.gob.mx/Archivos/Documentos/2025/04/asun_4896101_20250430_1745368159.pdf" class="list-link" target="_blank" rel="noopener noreferrer">[Ver]</a>
+                                    </li>
+                                    <li>
+                                        Proyecto de decreto (Reforma a la Ley General de Educación). (16/07/2025)
+                                        <a href="http://sil.gobernacion.gob.mx/Archivos/Documentos/2025/07/asun_4912583_20250716_1752679581.pdf" class="list-link" target="_blank" rel="noopener noreferrer">[Ver]</a>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="index.html" class="elegant-btn gold-btn">
+                        ← Volver
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-guinda-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+            
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-start border-b border-white/20 pb-8 mb-8">
+                
+                <div class="flex items-start space-x-4 mb-6 md:mb-0 max-w-sm">
+                    <div class="bg-white rounded-lg p-2 flex-shrink-0 mt-1">
+                        <img src="static/escudo.png" alt="Escudo Cámara de Diputados" class="w-14 h-14">
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-2xl font-extrabold leading-tight">LXVI Legislatura</h3>
+                        <p class="font-bold text-lg text-dorado-light">Baja California</p>
+                        <p class="text-xs text-gray-300 mt-2">
+                            Representando con honor y compromiso los intereses de Baja California en el Congreso de la Unión.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-3 flex items-center justify-center w-28 h-28 flex-shrink-0">
+                    <img src="static/morena.png" alt="Logo de Morena" class="object-contain w-full h-full">
+                </div>
+
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                
+                <div>
+                    <h4 class="font-bold text-sm text-dorado-light mb-4 uppercase tracking-wider">Enlaces Rápidos</h4>
+                    <div class="space-y-2">
+                        <a href="index.html#inicio" class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Inicio
+                        </a>
+                        <a href="index.html#diputadas" class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Diputadas y Diputados
+                        </a>
+                        <a href="index.html#boletines" class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Boletines
+                        </a>
+                        <a href="index.html#eventos" class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Eventos
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold text-sm text-dorado-light mb-4 uppercase tracking-wider">Sitios de Interés</h4>
+                    <div class="space-y-2">
+                        <a href="https://www.diputados.gob.mx/" target="_blank" rel="noopener noreferrer"
+                            class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Cámara de Diputados
+                        </a>
+                        <a href="http://sil.gobernacion.gob.mx/" target="_blank" rel="noopener noreferrer"
+                            class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Congreso de la Unión
+                        </a>
+                        <a href="https://www.gob.mx/" target="_blank" rel="noopener noreferrer"
+                            class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Gobierno de México
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-span-2 md:col-span-1">
+                    <h4 class="font-bold text-sm text-dorado-light mb-4 uppercase tracking-wider">Sede Legislativa</h4>
+                    <div class="space-y-1 text-sm text-gray-300">
+                        <p>Av. Congreso de la Unión No. 66</p>
+                        <p>Col. El Parque, C.P. 15960</p>
+                        <p>Alcaldía Venustiano Carranza, CDMX</p>
+                        <p class="font-semibold pt-2">Tel: (55) 5036 0000</p>
+                    </div>
+                </div>
+
+                <div class="col-span-2 md:col-span-1">
+                    <h4 class="font-bold text-sm text-dorado-light mb-4 uppercase tracking-wider">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" aria-label="Síguenos en X" class="text-gray-300 hover:text-dorado-light transition-colors">
+                            <span class="icon-placeholder"></span> 
+                        </a>
+                        <a href="#" aria-label="Síguenos en Facebook" class="text-gray-300 hover:text-dorado-light transition-colors">
+                            <span class="icon-placeholder"></span> 
+                        </a>
+                        <a href="#" aria-label="Síguenos en Instagram" class="text-gray-300 hover:text-dorado-light transition-colors">
+                            <span class="icon-placeholder"></span> 
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center pt-8 mt-8 border-t border-white/20">
+                <p class="text-xs text-gray-400">
+                    &copy; 2025 Diputados Federales de Baja California - LXVI Legislatura. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // La funcionalidad de fetch del footer ya no es necesaria
+        // ya que el código fue integrado directamente.
+        
+        // Simplemente se mantiene este script para evitar errores de consola
+        // si se ejecuta un fetch en el futuro o si existían otras funciones aquí.
+    </script>
+</body>
+
+</html>

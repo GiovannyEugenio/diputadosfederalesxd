@@ -1,0 +1,2771 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diputadas y Diputados Federales por Baja California - LXVI Legislatura</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'guinda': '#8B1538',
+                        'guinda-dark': '#6B1028',
+                        'guinda-light': '#A91B47',
+                        'dorado': '#D4AF37',
+                        'dorado-light': '#E8C547',
+                        'dorado-dark': '#B8941F',
+                        'cream': '#FDF8F0',
+                        'pearl': '#F8F6F3'
+                    },
+                    fontFamily: {
+                        'serif': ['Playfair Display', 'serif'],
+                        'sans': ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* LOADING SCREEN & TYPEWRITER EFFECT */
+        #loading-screen {
+            background-color: #6B1028;
+            /* Color de respaldo mientras cargan las imágenes */
+        }
+
+        /* --- Carrusel en Pantalla de Carga --- */
+        .loading-carousel-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .loading-carousel-track {
+            display: flex;
+            width: 300%;
+            /* 100% por cada imagen (3 imágenes) */
+            height: 100%;
+            animation: loadingScreenSlide 12s linear infinite;
+        }
+
+        .loading-carousel-slide {
+            width: 33.333%;
+            /* 100% / 3 imágenes */
+            height: 100%;
+        }
+
+        .loading-carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.6);
+            /* Oscurece las imágenes para que el texto resalte */
+        }
+
+        @keyframes loadingScreenSlide {
+
+            0%,
+            30% {
+                transform: translateX(0);
+            }
+
+            33%,
+            63% {
+                transform: translateX(-33.333%);
+            }
+
+            66%,
+            96% {
+                transform: translateX(-66.666%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        .typewriter-container {
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .typewriter-text {
+            font-family: 'Playfair Display', serif;
+            white-space: pre-line;
+            text-align: center;
+            letter-spacing: 0.05em;
+            line-height: 1.2;
+        }
+
+        .cursor {
+            animation: blink 1s infinite;
+            color: #D4AF37;
+            font-weight: 300;
+        }
+
+        .subtitle-fade {
+            transition: all 1s ease-out;
+            transform: translateY(20px);
+        }
+
+        .loading-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 12;
+            /* Asegura que las partículas estén sobre el carrusel */
+        }
+
+        .loading-particle {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.8), transparent);
+            border-radius: 50%;
+            animation: loadingFloat 3s ease-in-out infinite;
+        }
+
+        .screen-fade-out {
+            animation: fadeOutUp 1s ease-in-out forwards;
+        }
+
+        .main-content-fade-in {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        /* Enhanced scroll animations */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .scroll-reveal-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-reveal-left.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-reveal-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-reveal-right.revealed {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .scroll-scale {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-scale.revealed {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Keyframes for loading screen */
+
+        @keyframes blink {
+
+            0%,
+            50% {
+                opacity: 1;
+            }
+
+            51%,
+            100% {
+                opacity: 0;
+            }
+        }
+
+        @keyframes loadingFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px) scale(1);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translateY(-30px) scale(1.2);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeOutUp {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateY(-100px);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* BAJA CALIFORNIA ANIMATED BACKGROUND */
+        .bc-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #FDF8F0 0%, #F8F6F3 30%, #FDF8F0 70%, #F8F6F3 100%);
+            overflow: hidden;
+            animation: backgroundShift 30s ease-in-out infinite;
+        }
+
+        /* Dynamic ocean waves with more movement */
+        .ocean-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 300%;
+            height: 180px;
+            background: linear-gradient(90deg, rgba(139, 21, 56, 0.08), rgba(212, 175, 55, 0.12), rgba(139, 21, 56, 0.06));
+            border-radius: 100% 100% 0 0;
+            animation: waveFlow 12s ease-in-out infinite;
+        }
+
+        .ocean-wave:nth-child(2) {
+            height: 150px;
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.06), rgba(139, 21, 56, 0.09), rgba(212, 175, 55, 0.04));
+            animation: waveFlow 15s ease-in-out infinite reverse;
+            animation-delay: -3s;
+        }
+
+        .ocean-wave:nth-child(3) {
+            height: 120px;
+            background: linear-gradient(90deg, rgba(139, 21, 56, 0.04), rgba(212, 175, 55, 0.07), rgba(139, 21, 56, 0.03));
+            animation: waveFlow 18s ease-in-out infinite;
+            animation-delay: -7s;
+        }
+
+        .ocean-wave:nth-child(4) {
+            height: 90px;
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.03), rgba(139, 21, 56, 0.05), rgba(212, 175, 55, 0.02));
+            animation: waveFlow 21s ease-in-out infinite reverse;
+            animation-delay: -12s;
+        }
+
+        /* Dynamic desert mountains with rotation */
+        .mountain {
+            position: absolute;
+            bottom: 180px;
+            background: linear-gradient(135deg, rgba(139, 21, 56, 0.1), rgba(212, 175, 55, 0.15), rgba(139, 21, 56, 0.08));
+            clip-path: polygon(0% 100%, 20% 30%, 40% 10%, 60% 35%, 80% 5%, 100% 25%, 100% 100%);
+            animation: mountainDrift 30s ease-in-out infinite;
+            filter: blur(0.5px);
+        }
+
+        .mountain-1 {
+            left: -15%;
+            width: 50%;
+            height: 220px;
+            animation-delay: 0s;
+            transform-origin: bottom center;
+        }
+
+        .mountain-2 {
+            right: -20%;
+            width: 60%;
+            height: 200px;
+            animation-delay: -10s;
+            transform-origin: bottom center;
+        }
+
+        .mountain-3 {
+            left: 25%;
+            width: 45%;
+            height: 180px;
+            animation-delay: -20s;
+            transform-origin: bottom center;
+        }
+
+        .mountain-4 {
+            right: 40%;
+            width: 35%;
+            height: 160px;
+            animation-delay: -15s;
+            transform-origin: bottom center;
+        }
+
+        /* Enhanced floating cacti with more dynamic movement */
+        .cactus {
+            position: absolute;
+            font-size: 2.5rem;
+            opacity: 0.12;
+            animation: cactusSwirl 25s ease-in-out infinite;
+            filter: drop-shadow(0 0 10px rgba(139, 21, 56, 0.1));
+        }
+
+        .cactus-1 {
+            top: 15%;
+            left: 8%;
+            animation-delay: 0s;
+        }
+
+        .cactus-2 {
+            top: 65%;
+            right: 12%;
+            animation-delay: -8s;
+        }
+
+        .cactus-3 {
+            top: 35%;
+            left: 75%;
+            animation-delay: -16s;
+        }
+
+        .cactus-4 {
+            top: 80%;
+            left: 40%;
+            animation-delay: -12s;
+        }
+
+        .cactus-5 {
+            top: 25%;
+            right: 35%;
+            animation-delay: -20s;
+        }
+
+        /* Enhanced floating particles with varied sizes and speeds */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            animation: particleDance 15s linear infinite;
+        }
+
+        .particle-small {
+            width: 3px;
+            height: 3px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.4), transparent);
+        }
+
+        .particle-medium {
+            width: 6px;
+            height: 6px;
+            background: radial-gradient(circle, rgba(139, 21, 56, 0.3), transparent);
+        }
+
+        .particle-large {
+            width: 8px;
+            height: 8px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent);
+        }
+
+        /* Wind effect particles */
+        .wind-particle {
+            position: absolute;
+            width: 2px;
+            height: 20px;
+            background: linear-gradient(to bottom, rgba(212, 175, 55, 0.3), transparent);
+            border-radius: 50%;
+            animation: windFlow 8s linear infinite;
+        }
+
+        /* Enhanced keyframe animations */
+        @keyframes backgroundShift {
+
+            0%,
+            100% {
+                background: linear-gradient(135deg, #FDF8F0 0%, #F8F6F3 30%, #FDF8F0 70%, #F8F6F3 100%);
+            }
+
+            25% {
+                background: linear-gradient(135deg, #F8F6F3 0%, #FDF8F0 30%, #F8F6F3 70%, #FDF8F0 100%);
+            }
+
+            50% {
+                background: linear-gradient(135deg, #FDF8F0 0%, #F8F6F3 50%, #FDF8F0 50%, #F8F6F3 100%);
+            }
+
+            75% {
+                background: linear-gradient(135deg, #F8F6F3 0%, #FDF8F0 40%, #F8F6F3 60%, #FDF8F0 100%);
+            }
+        }
+
+        @keyframes waveFlow {
+
+            0%,
+            100% {
+                transform: translateX(-33%) translateY(0px) rotate(0deg) scaleY(1);
+            }
+
+            25% {
+                transform: translateX(-33%) translateY(-15px) rotate(0.5deg) scaleY(1.1);
+            }
+
+            50% {
+                transform: translateX(-33%) translateY(-8px) rotate(0deg) scaleY(0.9);
+            }
+
+            75% {
+                transform: translateX(-33%) translateY(-20px) rotate(-0.5deg) scaleY(1.05);
+            }
+        }
+
+        @keyframes mountainDrift {
+
+            0%,
+            100% {
+                transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+                opacity: 0.1;
+            }
+
+            25% {
+                transform: translateY(-25px) translateX(10px) rotate(0.5deg) scale(1.02);
+                opacity: 0.15;
+            }
+
+            50% {
+                transform: translateY(-15px) translateX(-5px) rotate(0deg) scale(0.98);
+                opacity: 0.08;
+            }
+
+            75% {
+                transform: translateY(-30px) translateX(15px) rotate(-0.3deg) scale(1.01);
+                opacity: 0.12;
+            }
+        }
+
+        @keyframes cactusSwirl {
+
+            0%,
+            100% {
+                transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
+                opacity: 0.12;
+            }
+
+            20% {
+                transform: translateY(-40px) translateX(20px) rotate(3deg) scale(1.1);
+                opacity: 0.18;
+            }
+
+            40% {
+                transform: translateY(-20px) translateX(-15px) rotate(-2deg) scale(0.95);
+                opacity: 0.08;
+            }
+
+            60% {
+                transform: translateY(-50px) translateX(25px) rotate(4deg) scale(1.05);
+                opacity: 0.15;
+            }
+
+            80% {
+                transform: translateY(-10px) translateX(-10px) rotate(-1deg) scale(0.9);
+                opacity: 0.1;
+            }
+        }
+
+        @keyframes particleDance {
+            0% {
+                transform: translateY(100vh) translateX(0px) rotate(0deg) scale(0);
+                opacity: 0;
+            }
+
+            5% {
+                opacity: 1;
+                transform: translateY(95vh) translateX(10px) rotate(45deg) scale(1);
+            }
+
+            25% {
+                transform: translateY(75vh) translateX(-20px) rotate(180deg) scale(1.2);
+            }
+
+            50% {
+                transform: translateY(50vh) translateX(30px) rotate(270deg) scale(0.8);
+            }
+
+            75% {
+                transform: translateY(25vh) translateX(-15px) rotate(360deg) scale(1.1);
+            }
+
+            95% {
+                opacity: 1;
+                transform: translateY(5vh) translateX(40px) rotate(405deg) scale(0.9);
+            }
+
+            100% {
+                transform: translateY(-10vh) translateX(50px) rotate(450deg) scale(0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes windFlow {
+            0% {
+                transform: translateX(-100px) translateY(100vh) rotate(15deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 0.6;
+            }
+
+            90% {
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateX(100vw) translateY(-100px) rotate(-15deg);
+                opacity: 0;
+            }
+        }
+
+        .elegant-gradient {
+            background: linear-gradient(135deg, #8B1538 0%, #6B1028 50%, #8B1538 100%);
+        }
+
+        .gold-accent {
+            background: linear-gradient(45deg, #D4AF37, #E8C547);
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .elegant-shadow {
+            box-shadow: 0 20px 60px rgba(139, 21, 56, 0.15);
+        }
+
+        .gold-shadow {
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
+        }
+
+        .counter {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #8B1538, #D4AF37);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .elegant-card {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transform: translateY(0px);
+        }
+
+        .elegant-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 25px 80px rgba(139, 21, 56, 0.2);
+            border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        .nav-link {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #D4AF37, #E8C547);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .elegant-btn {
+            background: linear-gradient(135deg, #8B1538, #A91B47);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .elegant-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .elegant-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(139, 21, 56, 0.4);
+        }
+
+        .elegant-btn:hover::before {
+            left: 100%;
+        }
+
+        .gold-btn {
+            background: linear-gradient(135deg, #D4AF37, #E8C547);
+            color: #8B1538;
+            font-weight: 600;
+        }
+
+        .gold-btn:hover {
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #8B1538, #D4AF37);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+            opacity: 0;
+        }
+
+        .slide-up {
+            animation: slideUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        .bounce-in {
+            animation: bounceIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .stagger-1 {
+            animation-delay: 0.1s;
+        }
+
+        .stagger-2 {
+            animation-delay: 0.2s;
+        }
+
+        .stagger-3 {
+            animation-delay: 0.3s;
+        }
+
+        .stagger-4 {
+            animation-delay: 0.4s;
+        }
+
+        .stagger-5 {
+            animation-delay: 0.5s;
+        }
+
+        .stagger-6 {
+            animation-delay: 0.6s;
+        }
+
+        .hero-pattern {
+            background-image:
+                radial-gradient(circle at 25% 25%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 75% 75%, rgba(139, 21, 56, 0.1) 0%, transparent 50%);
+        }
+
+        .deputy-photo {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 3px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .deputy-photo:hover {
+            border-color: rgba(212, 175, 55, 0.6);
+            transform: scale(1.05);
+        }
+
+        /* Page transition effects */
+        .page-transition {
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .section-content {
+            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .section-content.hidden {
+            opacity: 0;
+            transform: translateY(30px);
+            pointer-events: none;
+        }
+
+        .section-content:not(.hidden) {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: all;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .nav-link {
+                padding: 0.5rem 0.75rem;
+                font-size: 0.9rem;
+            }
+
+            .elegant-btn {
+                padding: 10px 24px;
+                font-size: 0.9rem;
+            }
+
+            .elegant-card {
+                margin-bottom: 1rem;
+            }
+
+            .elegant-card:hover {
+                transform: translateY(-8px) scale(1.01);
+            }
+
+            .deputy-photo {
+                height: 200px;
+            }
+
+            .mountain-1,
+            .mountain-2,
+            .mountain-3 {
+                height: 120px;
+            }
+
+            .ocean-wave {
+                height: 100px;
+            }
+
+            .ocean-wave:nth-child(2) {
+                height: 80px;
+            }
+
+            .ocean-wave:nth-child(3) {
+                height: 60px;
+            }
+
+            .typewriter-text {
+                font-size: 2rem !important;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .section-title {
+                margin-bottom: 2rem;
+            }
+
+            .elegant-card {
+                padding: 1rem;
+            }
+
+            .nav-link {
+                padding: 0.5rem;
+                font-size: 0.85rem;
+            }
+
+            .typewriter-text {
+                font-size: 1.5rem !important;
+            }
+        }
+
+        /* --- Carrusel en el Header (AJUSTADO PARA 6 IMÁGENES) --- */
+        .header-carousel-container {
+            width: 100%;
+            position: relative;
+            height: 400px;
+            /* Altura del carrusel, ajusta según necesidad */
+        }
+
+        .header-carousel {
+            display: flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 600%;
+            /* AJUSTE: Para 6 imágenes */
+            height: 100%;
+            animation: headerSlide 28s linear infinite;
+            /* Duplicado el tiempo para ser más lento */
+        }
+
+        .header-carousel .carousel-slide {
+            width: 16.66%;
+            /* AJUSTE: 100% / 6 imágenes */
+            height: 100%;
+            flex-shrink: 0;
+        }
+
+        .header-carousel .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+            /* Oscurece la imagen para que el texto resalte */
+        }
+
+        /* Keyframes para la animación del carrusel del header */
+        @keyframes headerSlide {
+
+            /* 6 pasos de 16.66% cada uno */
+            0%,
+            14% {
+                transform: translateX(0);
+            }
+
+            16.66%,
+            30.66% {
+                transform: translateX(-16.66%);
+            }
+
+            33.33%,
+            47.33% {
+                transform: translateX(-33.33%);
+            }
+
+            50%,
+            64% {
+                transform: translateX(-50%);
+            }
+
+            66.66%,
+            80.66% {
+                transform: translateX(-66.66%);
+            }
+
+            83.33%,
+            97.33% {
+                transform: translateX(-83.33%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Asegura que el contenido del header esté encima */
+        .header-carousel-container .relative.z-10 {
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body class="bg-cream">
+    <!-- LOADING SCREEN WITH TYPEWRITER EFFECT -->
+    <div id="loading-screen" class="fixed inset-0 z-50 flex items-center justify-center">
+        <div class="loading-carousel-container">
+            <div class="loading-carousel-track">
+                <div class="loading-carousel-slide">
+                    <img src="static/diputados.png" alt="Diputados Federales">
+                </div>
+                <div class="loading-carousel-slide">
+                    <img src="static/carrusel1.jpeg" alt="Bandera de México">
+                </div>
+                <div class="loading-carousel-slide">
+                    <img src="static/carrusel3.JPG" alt="Palacio de Bellas Artes">
+                </div>
+            </div>
+        </div>
+
+        <div class="relative z-10 text-center">
+            <div class="typewriter-container">
+                <h1 id="typewriter-text"
+                    class="typewriter-text text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+                    <span class="cursor">|</span>
+                </h1>
+                <p id="subtitle-text" class="text-lg md:text-xl text-dorado-light opacity-0 subtitle-fade">
+                    LXVI Legislatura
+                </p>
+            </div>
+
+            <div class="loading-particles">
+                <div class="loading-particle" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+                <div class="loading-particle" style="top: 30%; right: 15%; animation-delay: 1s;"></div>
+                <div class="loading-particle" style="bottom: 25%; left: 20%; animation-delay: 2s;"></div>
+                <div class="loading-particle" style="bottom: 35%; right: 25%; animation-delay: 3s;"></div>
+                <div class="loading-particle" style="top: 60%; left: 80%; animation-delay: 4s;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT (Initially hidden) -->
+    <div id="main-content" class="opacity-0">
+
+        <!-- BAJA CALIFORNIA ANIMATED BACKGROUND -->
+        <div class="bc-background">
+            <!-- Enhanced ocean waves -->
+            <div class="ocean-wave"></div>
+            <div class="ocean-wave"></div>
+            <div class="ocean-wave"></div>
+            <div class="ocean-wave"></div>
+
+            <!-- Dynamic desert mountains -->
+            <div class="mountain mountain-1"></div>
+            <div class="mountain mountain-2"></div>
+            <div class="mountain mountain-3"></div>
+            <div class="mountain mountain-4"></div>
+
+            <!-- Enhanced floating cacti -->
+            <div class="cactus cactus-1">🌵</div>
+            <div class="cactus cactus-2">🌵</div>
+            <div class="cactus cactus-3">🌵</div>
+            <div class="cactus cactus-4">🌵</div>
+            <div class="cactus cactus-5">🌵</div>
+
+            <!-- Enhanced floating particles with varied sizes -->
+            <div class="particle particle-small" style="top: 10%; left: 20%; animation-delay: 0s;"></div>
+            <div class="particle particle-medium" style="top: 30%; left: 60%; animation-delay: 2s;"></div>
+            <div class="particle particle-large" style="top: 50%; left: 10%; animation-delay: 4s;"></div>
+            <div class="particle particle-small" style="top: 70%; left: 80%; animation-delay: 6s;"></div>
+            <div class="particle particle-medium" style="top: 20%; left: 90%; animation-delay: 8s;"></div>
+            <div class="particle particle-large" style="top: 80%; left: 30%; animation-delay: 10s;"></div>
+            <div class="particle particle-small" style="top: 40%; left: 45%; animation-delay: 12s;"></div>
+            <div class="particle particle-medium" style="top: 60%; left: 15%; animation-delay: 14s;"></div>
+
+            <!-- Wind effect particles -->
+            <div class="wind-particle" style="top: 25%; left: 5%; animation-delay: 0s;"></div>
+            <div class="wind-particle" style="top: 45%; left: 15%; animation-delay: 3s;"></div>
+            <div class="wind-particle" style="top: 65%; left: 25%; animation-delay: 6s;"></div>
+            <div class="wind-particle" style="top: 35%; left: 35%; animation-delay: 9s;"></div>
+            <div class="wind-particle" style="top: 55%; left: 45%; animation-delay: 12s;"></div>
+        </div>
+
+        <!-- ELEGANT HEADER -->
+        <header class="relative">
+            <!-- Main Header -->
+            <div class="header-carousel-container relative elegant-gradient overflow-hidden">
+                <div class="carousel-track header-carousel" id="header-image-carousel">
+                    <div class="carousel-slide">
+                        <img src="static/diputados.png" alt="Diputados Federales">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="static/carrusel1.jpeg" alt="Bandera de México">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="static/carrusel2.jpeg" alt="Palacio de Bellas Artes">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="static/carrusel3.JPG" alt="Palacio de Bellas Artes">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="static/carrusel4.JPG" alt="Palacio de Bellas Artes">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="static/carrusel5.JPG" alt="Palacio de Bellas Artes">
+                    </div>
+                </div>
+
+                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+                    <div class="text-center text-white">
+                        <div class="mb-6">
+                        </div>
+                        <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-4 fade-in">
+                            LXVI Legislatura
+                        </h1>
+                        <p class="text-lg md:text-xl lg:text-2xl font-light mb-2 fade-in stagger-1">
+                            Diputadas y Diputados Federales
+                        </p>
+                        <p class="text-base md:text-lg font-medium text-dorado-light fade-in stagger-2">
+                            Baja California
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="glass-effect sticky top-0 z-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6">
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:flex justify-center py-6">
+                        <div class="flex space-x-4 lg:space-x-8">
+                            <button onclick="showSection('inicio')"
+                                class="nav-link text-guinda hover:text-dorado font-medium px-3 lg:px-4 py-2 active">
+                                Inicio
+                            </button>
+                            <button onclick="showSection('diputadas')"
+                                class="nav-link text-guinda hover:text-dorado font-medium px-3 lg:px-4 py-2">
+                                Diputadas
+                            </button>
+                            <button onclick="showSection('diputados')"
+                                class="nav-link text-guinda hover:text-dorado font-medium px-3 lg:px-4 py-2">
+                                Diputados
+                            </button>
+                            <button onclick="showSection('boletines')"
+                                class="nav-link text-guinda hover:text-dorado font-medium px-3 lg:px-4 py-2">
+                                Boletines
+                            </button>
+                            <button onclick="showSection('eventos')"
+                                class="nav-link text-guinda hover:text-dorado font-medium px-3 lg:px-4 py-2">
+                                Eventos
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Navigation -->
+                    <div class="md:hidden">
+                        <div class="flex justify-between items-center py-4">
+                            <div class="flex items-center">
+                                <span class="font-serif text-lg font-bold text-guinda">LXVI Legislatura</span>
+                            </div>
+                            <button onclick="toggleMobileMenu()"
+                                class="text-guinda hover:text-dorado p-2 rounded-lg transition-all duration-300">
+                                <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M4 6h16M4 12h16M4 18h16" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <!-- Mobile menu -->
+                        <div id="mobile-menu" class="hidden border-t border-dorado border-opacity-20 py-4">
+                            <div class="space-y-2">
+                                <button onclick="showSection('inicio'); toggleMobileMenu()"
+                                    class="nav-link w-full text-left text-guinda hover:text-dorado font-medium px-4 py-3 rounded-lg active">
+                                    🏠 Inicio
+                                </button>
+                                <button onclick="showSection('diputadas'); toggleMobileMenu()"
+                                    class="nav-link w-full text-left text-guinda hover:text-dorado font-medium px-4 py-3 rounded-lg">
+                                    👩‍💼 Diputadas
+                                </button>
+                                <button onclick="showSection('diputados'); toggleMobileMenu()"
+                                    class="nav-link w-full text-left text-guinda hover:text-dorado font-medium px-4 py-3 rounded-lg">
+                                    👨‍💼 Diputados
+                                </button>
+                                <button onclick="showSection('boletines'); toggleMobileMenu()"
+                                    class="nav-link w-full text-left text-guinda hover:text-dorado font-medium px-4 py-3 rounded-lg">
+                                    📰 Boletines
+                                </button>
+                                <button onclick="showSection('eventos'); toggleMobileMenu()"
+                                    class="nav-link w-full text-left text-guinda hover:text-dorado font-medium px-4 py-3 rounded-lg">
+                                    📅 Eventos
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- MAIN CONTENT -->
+        <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-12 min-h-[60vh]">
+
+            <!-- INICIO SECTION -->
+            <section id="inicio" class="section-content">
+                <!-- Hero Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12 md:mb-16">
+                    <div class="text-center elegant-card bg-white rounded-2xl p-6 md:p-8 slide-up stagger-1">
+                        <div class="counter mb-4" data-target="9">0</div>
+                        <h3 class="text-lg md:text-xl font-semibold text-guinda mb-2">Total</h3>
+                        <p class="text-gray-600 text-sm md:text-base">Diputados Federales</p>
+                    </div>
+                    <div class="text-center elegant-card bg-white rounded-2xl p-6 md:p-8 slide-up stagger-2">
+                        <div class="counter mb-4" data-target="6">0</div>
+                        <h3 class="text-lg md:text-xl font-semibold text-guinda mb-2">Diputadas</h3>
+                        <p class="text-gray-600 text-sm md:text-base">Representantes</p>
+                    </div>
+                    <div class="text-center elegant-card bg-white rounded-2xl p-6 md:p-8 slide-up stagger-3">
+                        <div class="counter mb-4" data-target="3">0</div>
+                        <h3 class="text-lg md:text-xl font-semibold text-guinda mb-2">Diputados</h3>
+                        <p class="text-gray-600 text-sm md:text-base">Representantes</p>
+                    </div>
+                </div>
+
+                <!-- Mission Statement -->
+                <div
+                    class="elegant-card bg-guinda text-white rounded-3xl p-8 md:p-12 mb-12 md:mb-16 slide-up stagger-4">
+                    <div class="text-center max-w-4xl mx-auto">
+                        <h2 class="font-serif text-2xl md:text-3xl lg:text-4xl font-bold mb-4 md:mb-6">
+                            Representando a Baja California
+                        </h2>
+                        <p class="text-base md:text-lg text-gray-200 leading-relaxed mb-6 md:mb-8">
+                            Trabajamos incansablemente por el desarrollo y bienestar de nuestro estado,
+                            llevando la voz de los bajacalifornianos al Congreso de la Unión con
+                            compromiso, transparencia y dedicación.
+                        </p>
+                        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                            <button onclick="showSection('diputadas')"
+                                class="bg-white text-guinda font-semibold py-3 px-8 rounded-full transition-transform duration-300 hover:scale-105">
+                                Conocer Diputadas
+                            </button>
+                            <button onclick="showSection('diputados')" class="elegant-btn gold-btn w-full sm:w-auto">
+                                Conocer Diputados
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DIPUTADAS SECTION -->
+            <section id="diputadas" class="section-content hidden">
+                <h2 class="section-title">Diputadas Federales</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <!-- Alma Laura Ruiz Lopez -->
+                    <div class="elegant-card bg-white rounded-2xl overflow-hidden slide-up stagger-1">
+                        <div>
+                            <img src="static/alma_laura.png" alt="">
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <h3 class="font-serif text-xl md:text-2xl font-bold text-guinda mb-3">Alma Angelica Ruiz
+                                Esparza
+                            </h3>
+                            <div class="space-y-2 md:space-y-3 text-sm text-gray-600 mb-4 md:mb-6">
+                                <p><span class="font-semibold text-guinda">Formación:</span> Licenciada en Derecho</p>
+                                <p><span class="font-semibold text-guinda">Especialidad:</span> Ciencias Políticas y
+                                    Sociales</p>
+                            </div>
+                            <div class="mb-4 md:mb-6">
+                                <h4 class="font-semibold text-guinda mb-2">Comisiones:</h4>
+                                <div class="space-y-1">
+                                    <span
+                                        class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda">Educación</span>
+                                    <span
+                                        class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda ml-2">Igualdad
+                                        de Género</span>
+                                </div>
+                            </div>
+                            <a href="perfil-alma-ruiz.html" class="elegant-btn w-full text-center">Ver Perfil
+                                Completo</a>
+                        </div>
+                    </div>
+
+                    <!-- Nancy Guadalupe Sánchez Arredondo  -->
+                    <div class="elegant-card bg-white rounded-2xl overflow-hidden slide-up stagger-2">
+                        <div>
+                            <img src="static/nancy.png" alt="">
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <h3 class="font-serif text-xl md:text-2xl font-bold text-guinda mb-3">Nancy
+                                Sánchez Arredondo </h3>
+                            <div class="space-y-2 md:space-y-3 text-sm text-gray-600 mb-4 md:mb-6">
+                                <p><span class="font-semibold text-guinda">Formación:</span> Trabajo Social</p>
+                                <p><span class="font-semibold text-guinda">Especialidad:</span> Salud Pública</p>
+                            </div>
+                            <div class="mb-4 md:mb-6">
+                                <h4 class="font-semibold text-guinda mb-2">Comisiones:</h4>
+                                <div class="space-y-1">
+                                    <span
+                                        class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda">Salud</span>
+                                    <span
+                                        class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda ml-2">Desarrollo
+                                        Social</span>
+                                </div>
+                            </div>
+                            <a href="perfil-nancy-sanchez.html" class="elegant-btn w-full text-center">Ver Perfil
+                                Completo</a>
+                        </div>
+                    </div>
+
+                    <!-- Claudia Lisbeth Moreno Ramírez  -->
+                    <div class="elegant-card bg-white rounded-2xl overflow-hidden slide-up stagger-3">
+                        <div>
+                            <img src="static/claudia.png" alt="">
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <h3 class="font-serif text-xl md:text-2xl font-bold text-guinda mb-3">Claudia Lisbeth Moreno
+                                Ramírez </h3>
+                            <div class="space-y-2 md:space-y-3 text-sm text-gray-600 mb-4 md:mb-6">
+                                <p><span class="font-semibold text-guinda">Formación:</span> Licenciada en Economía</p>
+                                <p><span class="font-semibold text-guinda">Especialidad:</span> Política Económica</p>
+                            </div>
+                            <div class="mb-4 md:mb-6">
+                                <h4 class="font-semibold text-guinda mb-2">Comisiones:</h4>
+                                <div class="space-y-1">
+                                    <span
+                                        class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda">Economía</span>
+                                    <span
+                                        class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda ml-2">Hacienda</span>
+                                </div>
+                            </div>
+                            <a href="perfil-claudia-moreno.html" class="elegant-btn w-full text-center">Ver Perfil
+                                Completo</a>
+                        </div>
+                    </div>
+
+                    <!-- Rocío López Gorosave -->
+                    <div class="elegant-card bg-white rounded-2xl overflow-hidden slide-up stagger-4">
+                        <div>
+                            <img src="static/rocio.png" alt="">
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <h3 class="font-serif text-xl md:text-2xl font-bold text-guinda mb-3">Rocío López Gorosave
+                            </h3>
+                            <div class="space-y-2 md:space-y-3 text-sm text-gray-600 mb-4 md:mb-6">
+                                <p><span class="font-semibold text-guinda">Formación:</span> Lic. en Ciencias de la
+                                    Comunicación</p>
+                                <p><span class="font-semibold text-guinda">Especialidad:</span> Sustentabilidad</p>
+                            </div>
+                            <div class="mb-4 md:mb-6">
+                                <h4 class="font-semibold text-guinda mb-2">Comisiones:</h4>
+                                <div class="space-y-1">
+                                    <span class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda">Medio
+                                        Ambiente</span>
+                                    <span
+                                        class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda ml-2">Recursos
+                                        Hidráulicos</span>
+                                </div>
+                            </div>
+                            <a href="perfil-rocio-lopez.html" class="elegant-btn w-full text-center">Ver Perfil
+                                Completo</a>
+                        </div>
+                    </div>
+
+                    <!-- Evangelina Moreno Guerra -->
+                    <div class="elegant-card bg-white rounded-2xl overflow-hidden slide-up stagger-5">
+                        <div>
+                            <img src="static/evangelina.png" alt="">
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <h3 class="font-serif text-xl md:text-2xl font-bold text-guinda mb-3">Evangelina Moreno
+                                Guerra</h3>
+                            <div class="space-y-2 md:space-y-3 text-sm text-gray-600 mb-4 md:mb-6">
+                                <p><span class="font-semibold text-guinda">Formación:</span> Relaciones Laborales</p>
+                                <p><span class="font-semibold text-guinda">Especialidad:</span> Derechos Laborales</p>
+                            </div>
+                            <div class="mb-4 md:mb-6">
+                                <h4 class="font-semibold text-guinda mb-2">Comisiones:</h4>
+                                <div class="space-y-1">
+                                    <span
+                                        class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda">Trabajo</span>
+                                    <span
+                                        class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda ml-2">Seguridad
+                                        Social</span>
+                                </div>
+                            </div>
+                            <a href="perfil-evangelina-moreno.html" class="elegant-btn w-full text-center">Ver Perfil
+                                Completo</a>
+                        </div>
+                    </div>
+
+                    <!-- Hilda Araceli Brown Figueredo  -->
+                    <div class="elegant-card bg-white rounded-2xl overflow-hidden slide-up stagger-6">
+                        <div>
+                            <img src="static/hilda.png" alt="">
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <h3 class="font-serif text-xl md:text-2xl font-bold text-guinda mb-3">Hilda Araceli Brown
+                                Figueredo </h3>
+                            <div class="space-y-2 md:space-y-3 text-sm text-gray-600 mb-4 md:mb-6">
+                                <p><span class="font-semibold text-guinda">Formación:</span> Comunicación</p>
+                                <p><span class="font-semibold text-guinda">Especialidad:</span> Cultura y Turismo</p>
+                            </div>
+                            <div class="mb-4 md:mb-6">
+                                <h4 class="font-semibold text-guinda mb-2">Comisiones:</h4>
+                                <div class="space-y-1">
+                                    <span
+                                        class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda">Cultura</span>
+                                    <span
+                                        class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda ml-2">Turismo</span>
+                                </div>
+                            </div>
+                            <a href="perfil-hilda-brown.html" class="elegant-btn w-full text-center">Ver Perfil
+                                Completo</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DIPUTADOS SECTION -->
+            <section id="diputados" class="section-content hidden">
+                <h2 class="section-title">Diputados Federales</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <!-- José Armando Fernández Samaniego -->
+                    <div class="elegant-card bg-white rounded-2xl overflow-hidden slide-up stagger-1">
+                        <div>
+                            <img src="static/Jose.png" alt="">
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <h3 class="font-serif text-xl md:text-2xl font-bold text-guinda mb-3">José Armando Fernández
+                                Samaniego</h3>
+                            <div class="space-y-2 md:space-y-3 text-sm text-gray-600 mb-4 md:mb-6">
+                                <p><span class="font-semibold text-guinda">Formación:</span> Licenciado en Derecho</p>
+                                <p><span class="font-semibold text-guinda">Especialidad:</span> Gobernación y Justicia
+                                </p>
+                            </div>
+                            <div class="mb-4 md:mb-6">
+                                <h4 class="font-semibold text-guinda mb-2">Comisiones:</h4>
+                                <div class="space-y-1">
+                                    <span
+                                        class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda">Gobernación</span>
+                                    <span
+                                        class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda ml-2">Justicia</span>
+                                </div>
+                            </div>
+                            <a href="perfil-jose-fernandez.html" class="elegant-btn w-full text-center">Ver Perfil
+                                Completo</a>
+                        </div>
+                    </div>
+
+                    <!-- Gilberto Herrera Solórzano -->
+                    <div class="elegant-card bg-white rounded-2xl overflow-hidden slide-up stagger-2">
+                        <div>
+                            <img src="static/gilberto.png" alt="">
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <h3 class="font-serif text-xl md:text-2xl font-bold text-guinda mb-3">Gilberto Herrera
+                                Solórzano
+                            </h3>
+                            <div class="space-y-2 md:space-y-3 text-sm text-gray-600 mb-4 md:mb-6">
+                                <p><span class="font-semibold text-guinda">Formación:</span> Ingeniero Agrónomo</p>
+                                <p><span class="font-semibold text-guinda">Especialidad:</span> Desarrollo Rural</p>
+                            </div>
+                            <div class="mb-4 md:mb-6">
+                                <h4 class="font-semibold text-guinda mb-2">Comisiones:</h4>
+                                <div class="space-y-1">
+                                    <span
+                                        class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda">Agricultura</span>
+                                    <span
+                                        class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda ml-2">Desarrollo
+                                        Rural</span>
+                                </div>
+                            </div>
+                            <a href="perfil-gilberto-herrera.html" class="elegant-btn w-full text-center">Ver Perfil
+                                Completo</a>
+                        </div>
+                    </div>
+
+                    <!-- Fernando Jorge Castro Trenti -->
+                    <div class="elegant-card bg-white rounded-2xl overflow-hidden slide-up stagger-3">
+                        <div>
+                            <img src="static/trenti.png" alt="">
+                        </div>
+                        <div class="p-6 md:p-8">
+                            <h3 class="font-serif text-xl md:text-2xl font-bold text-guinda mb-3">Fernando Jorge Castro
+                                Trenti
+                            </h3>
+                            <div class="space-y-2 md:space-y-3 text-sm text-gray-600 mb-4 md:mb-6">
+                                <p><span class="font-semibold text-guinda">Formación:</span> Licenciado en Derecho</p>
+                                <p><span class="font-semibold text-guinda">Especialidad:</span> Infraestructura</p>
+                            </div>
+                            <div class="mb-4 md:mb-6">
+                                <h4 class="font-semibold text-guinda mb-2">Comisiones:</h4>
+                                <div class="space-y-1">
+                                    <span
+                                        class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda">Infraestructura</span>
+                                    <span
+                                        class="inline-block bg-pearl px-3 py-1 rounded-full text-xs text-guinda ml-2">Comunicaciones</span>
+                                </div>
+                            </div>
+                            <a href="perfil-fernando-castro.html" class="elegant-btn w-full text-center">Ver Perfil
+                                Completo</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BOLETINES SECTION -->
+            <section id="boletines" class="section-content hidden">
+                <h2 class="section-title">Directorio Legislativo y Boletines</h2>
+                <div class="space-y-6">
+                    <div onclick="verDetalle('araceli')"
+                        class="cursor-pointer elegant-card bg-white rounded-2xl p-6 md:p-8 flex items-center justify-between shadow-sm">
+                        <div class="flex items-center">
+                            <img src="static/hilda.png"
+                                class="w-16 h-16 rounded-full border-2 border-guinda mr-6 object-cover">
+                            <div>
+                                <h3 class="font-serif text-xl font-bold text-guinda">Araceli Brown Figueredo</h3>
+                                <p class="text-gray-600 text-sm">Distrito XX - Ficha Técnica y Boletines</p>
+                            </div>
+                        </div>
+                        <span class="text-3xl text-dorado font-bold">→</span>
+                    </div>
+                    <div onclick="verDetalle('fernando')"
+                        class="cursor-pointer elegant-card bg-white rounded-2xl p-6 md:p-8 flex items-center justify-between shadow-sm">
+                        <div class="flex items-center">
+                            <img src="static/trenti.png"
+                                class="w-16 h-16 rounded-full border-2 border-guinda mr-6 object-cover">
+                            <div>
+                                <h3 class="font-serif text-xl font-bold text-guinda">Fernando Jorge Castro Trenti</h3>
+                                <p class="text-gray-600 text-sm">Distrito I - Ficha Técnica y Boletines</p>
+                            </div>
+                        </div>
+                        <span class="text-3xl text-dorado font-bold">→</span>
+                    </div>
+                    <div onclick="verDetalle('evangelina')"
+                        class="cursor-pointer elegant-card bg-white rounded-2xl p-6 md:p-8 flex items-center justify-between shadow-sm">
+                        <div class="flex items-center">
+                            <img src="static/evangelina.png"
+                                class="w-16 h-16 rounded-full border-2 border-guinda mr-6 object-cover">
+                            <div>
+                                <h3 class="font-serif text-xl font-bold text-guinda">Evangelina Moreno Guerra</h3>
+                                <p class="text-gray-600 text-sm">Distrito IX - Ficha Técnica y Boletines</p>
+                            </div>
+                        </div>
+                        <span class="text-3xl text-dorado font-bold">→</span>
+                    </div>
+                    <div onclick="verDetalle('armando')"
+                        class="cursor-pointer elegant-card bg-white rounded-2xl p-6 md:p-8 flex items-center justify-between shadow-sm">
+                        <div class="flex items-center">
+                            <img src="static/Jose.png"
+                                class="w-16 h-16 rounded-full border-2 border-guinda mr-6 object-cover">
+                            <div>
+                                <h3 class="font-serif text-xl font-bold text-guinda">José Armando Fernández Samaniego
+                                </h3>
+                                <p class="text-gray-600 text-sm">Distrito XIV - Ficha Técnica y Proyectos</p>
+                            </div>
+                        </div>
+                        <span class="text-3xl text-dorado font-bold">→</span>
+                    </div>
+                    <div onclick="verDetalle('rocio')"
+                        class="cursor-pointer elegant-card bg-white rounded-2xl p-6 md:p-8 flex items-center justify-between shadow-sm">
+                        <div class="flex items-center">
+                            <img src="static/rocio.png"
+                                class="w-16 h-16 rounded-full border-2 border-guinda mr-6 object-cover">
+                            <div>
+                                <h3 class="font-serif text-xl font-bold text-guinda">Rocío López Gorosave</h3>
+                                <p class="text-gray-600 text-sm">Distrito XV - Ficha Técnica y Boletines</p>
+                            </div>
+                        </div>
+                        <span class="text-3xl text-dorado font-bold">→</span>
+                    </div>
+                </div>
+            </section>
+
+            <div id="detalle-contenedor" class="hidden">
+                <button onclick="regresarAlDirectorio()"
+                    class="text-guinda font-bold mb-6 flex items-center hover:text-dorado transition-colors">
+                    ← Volver al Directorio
+                </button>
+
+                <div id="exp-araceli" class="expediente-item hidden">
+                    <div class="bg-white rounded-3xl shadow-2xl overflow-hidden mb-8 border border-gray-100">
+                        <div class="grid grid-cols-1 lg:grid-cols-12">
+                            <div
+                                class="lg:col-span-4 bg-gradient-to-b from-gray-50 to-gray-100 border-r border-gray-200 p-8">
+                                <div class="relative text-center mb-8">
+                                    <div class="relative inline-block">
+                                        <div class="absolute inset-0 bg-dorado rounded-full blur-md opacity-20"></div>
+                                        <img src="static/hilda.png"
+                                            class="relative w-48 h-48 mx-auto rounded-full border-4 border-white shadow-xl object-cover z-10">
+                                        <div class="absolute bottom-2 right-4 z-20 bg-white p-1 rounded-lg shadow-md">
+                                            <img src="static/morena.png" alt="Morena" class="w-12 h-auto">
+                                        </div>
+                                    </div>
+                                    <h2 class="font-serif text-2xl font-bold text-guinda mt-6 leading-tight">Dip.
+                                        Araceli Brown Figueredo</h2>
+                                    <p class="text-dorado-dark font-semibold text-sm uppercase tracking-wider mt-1">
+                                        Distrito XX - Ensenada</p>
+                                </div>
+                                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 space-y-4">
+                                    <div class="flex items-center group">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-dorado/10 flex items-center justify-center mr-3 text-dorado-dark">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Elección</p>
+                                            <p class="font-medium text-gray-800">Mayoría Relativa</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center group">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-dorado/10 flex items-center justify-center mr-3 text-dorado-dark">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Formación</p>
+                                            <p class="font-medium text-gray-800">Lic. en Comunicación</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-8 p-8 md:p-10 bg-white">
+                                <div class="mb-10">
+                                    <h3 class="font-serif text-xl font-bold text-guinda mb-6 flex items-center">
+                                        <span class="w-2 h-8 bg-dorado rounded-full mr-3"></span>
+                                        Trabajo Legislativo
+                                    </h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div class="bg-pearl p-6 rounded-2xl border border-dorado/20">
+                                            <h4 class="text-sm font-bold text-gray-500 uppercase mb-4 tracking-wide">
+                                                Comisiones</h4>
+                                            <ul class="space-y-3">
+                                                <li class="flex items-center"><span
+                                                        class="w-2 h-2 bg-guinda rounded-full mr-3"></span><span
+                                                        class="font-medium text-gray-800">Cultura y
+                                                        Cinematografía</span></li>
+                                                <li class="flex items-center"><span
+                                                        class="w-2 h-2 bg-guinda rounded-full mr-3"></span><span
+                                                        class="font-medium text-gray-800">Turismo</span></li>
+                                                <li class="flex items-center"><span
+                                                        class="w-2 h-2 bg-guinda rounded-full mr-3"></span><span
+                                                        class="font-medium text-gray-800">Igualdad de Género</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-pearl p-6 rounded-2xl border border-dorado/20">
+                                            <h4 class="text-sm font-bold text-gray-500 uppercase mb-4 tracking-wide">
+                                                Temas Prioritarios</h4>
+                                            <div class="flex flex-wrap gap-2">
+                                                <span
+                                                    class="px-3 py-1 bg-white border border-dorado/30 rounded-full text-xs font-medium text-guinda">Turismo
+                                                    Sostenible</span>
+                                                <span
+                                                    class="px-3 py-1 bg-white border border-dorado/30 rounded-full text-xs font-medium text-guinda">Patrimonio
+                                                    Cultural</span>
+                                                <span
+                                                    class="px-3 py-1 bg-white border border-dorado/30 rounded-full text-xs font-medium text-guinda">Derechos
+                                                    de la Mujer</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div
+                                        class="p-4 rounded-xl bg-gray-50 border border-gray-100 text-center hover:bg-white hover:shadow-md transition-all">
+                                        <span class="block text-2xl mb-1">📜</span>
+                                        <span class="text-sm font-bold text-gray-600">Iniciativas</span>
+                                    </div>
+                                    <div
+                                        class="p-4 rounded-xl bg-gray-50 border border-gray-100 text-center hover:bg-white hover:shadow-md transition-all">
+                                        <span class="block text-2xl mb-1">🙋‍♀️</span>
+                                        <span class="text-sm font-bold text-gray-600">Asistencias</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h3
+                            class="font-serif text-2xl font-bold text-guinda mb-6 text-center border-b border-gray-200 pb-4">
+                            Boletines Recientes</h3>
+                        <div
+                            class="elegant-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex flex-col md:flex-row justify-between md:items-center">
+                                <div class="mb-4 md:mb-0">
+                                    <div class="flex items-center mb-2">
+                                        <span
+                                            class="bg-dorado text-white text-xs font-bold px-2 py-1 rounded uppercase mr-2">Turismo
+                                            / Economía</span>
+                                        <span class="text-gray-400 text-sm">08 de Junio 2025</span>
+                                    </div>
+                                    <h4 class="font-serif text-lg font-bold text-gray-800 mb-1">Impulso a Productos
+                                        Nacionales</h4>
+                                    <p class="text-gray-600 text-sm leading-relaxed max-w-2xl">Oferta de productos
+                                        nacionales e impulsar su venta informando a los consumidores.</p>
+                                </div>
+                                <a href="BOLETINES DE DIPUTADOS BAJA/ARACELI BROWN/08 DE JUNIO 2025.pdf" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="elegant-btn gold-btn whitespace-nowrap flex items-center justify-center">
+                                    <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                    </svg>
+                                    Descargar PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="exp-armando" class="expediente-item hidden">
+                    <div class="bg-white rounded-3xl shadow-2xl overflow-hidden mb-8 border border-gray-100">
+                        <div class="grid grid-cols-1 lg:grid-cols-12">
+                            <div
+                                class="lg:col-span-4 bg-gradient-to-b from-gray-50 to-gray-100 border-r border-gray-200 p-8">
+                                <div class="relative text-center mb-8">
+                                    <div class="relative inline-block">
+                                        <div class="absolute inset-0 bg-guinda rounded-full blur-md opacity-20"></div>
+                                        <img src="static/Jose.png"
+                                            class="relative w-48 h-48 mx-auto rounded-full border-4 border-white shadow-xl object-cover z-10">
+                                        <div class="absolute bottom-2 right-4 z-20 bg-white p-1 rounded-lg shadow-md">
+                                            <img src="static/morena.png" alt="Morena" class="w-12 h-auto">
+                                        </div>
+                                    </div>
+                                    <h2 class="font-serif text-2xl font-bold text-guinda mt-6 leading-tight">Dip. José
+                                        Armando Fernández</h2>
+                                    <p class="text-dorado-dark font-semibold text-sm uppercase tracking-wider mt-1">
+                                        Distrito XIV - Mexicali</p>
+                                </div>
+                                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 space-y-4">
+                                    <h3 class="text-xs font-bold text-gray-400 uppercase border-b border-gray-100 pb-2">
+                                        Perfil Académico</h3>
+                                    <div class="flex items-center group">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center mr-3 text-blue-800">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Licenciatura</p>
+                                            <p class="font-medium text-gray-800">Derecho</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center group">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center mr-3 text-blue-800">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Áreas de Interés</p>
+                                            <p class="font-medium text-gray-800">Gobernación y Justicia</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-8 p-8 md:p-10 bg-white">
+                                <div class="mb-10">
+                                    <h3 class="font-serif text-xl font-bold text-guinda mb-6 flex items-center">
+                                        <span class="w-2 h-8 bg-dorado rounded-full mr-3"></span>Comisiones
+                                    </h3>
+                                    <div class="flex flex-wrap gap-3 mb-6">
+                                        <span
+                                            class="bg-guinda text-white px-4 py-2 rounded-lg font-medium shadow-sm">Gobernación</span>
+                                        <span
+                                            class="bg-guinda text-white px-4 py-2 rounded-lg font-medium shadow-sm">Justicia</span>
+                                    </div>
+                                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded-r-lg">
+                                        <p class="text-blue-900 italic">"Trabajando por un marco legal justo y eficiente
+                                            para todos los bajacalifornianos, enfocados en la gestión integral del
+                                            agua."</p>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4">
+                                    <button
+                                        class="bg-white border-2 border-guinda text-guinda hover:bg-guinda hover:text-white font-bold py-3 px-4 rounded-xl transition-all">Ver
+                                        Iniciativas</button>
+                                    <button
+                                        class="bg-white border-2 border-dorado text-dorado-dark hover:bg-dorado hover:text-white font-bold py-3 px-4 rounded-xl transition-all">Gestión
+                                        Social</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+                        <div
+                            class="bg-white p-6 rounded-2xl border-t-4 border-guinda shadow-lg hover:-translate-y-1 transition-transform">
+                            <div class="flex justify-between items-start mb-4">
+                                <span
+                                    class="bg-guinda/10 text-guinda font-bold px-2 py-1 rounded text-xs uppercase">Iniciativa
+                                    de Ley</span>
+                                <span class="text-gray-400 text-sm">16 ABR 2025</span>
+                            </div>
+                            <h4 class="font-serif text-xl font-bold text-gray-800 mb-2">Uso de Agua de Lluvia y
+                                Regenerada</h4>
+                            <p class="text-gray-600 text-sm mb-4">Propuesta legislativa para optimizar los recursos
+                                hídricos del estado.</p>
+                            <a href="BOLETINES DE DIPUTADOS BAJA/JOSE SAMANIEGO/16 DE ABRIL 2025.pdf" target="_blank"
+                                class="text-guinda font-bold hover:underline flex items-center">Leer documento completo
+                                →</a>
+                        </div>
+                        <div
+                            class="bg-white p-6 rounded-2xl border-t-4 border-dorado shadow-lg hover:-translate-y-1 transition-transform">
+                            <div class="flex justify-between items-start mb-4">
+                                <span
+                                    class="bg-dorado/20 text-dorado-dark font-bold px-2 py-1 rounded text-xs uppercase">Boletín
+                                    de Gestión</span>
+                                <span class="text-gray-400 text-sm">16 JUL 2025</span>
+                            </div>
+                            <h4 class="font-serif text-xl font-bold text-gray-800 mb-2">Armonización Legislativa</h4>
+                            <p class="text-gray-600 text-sm mb-4">Reporte de actividades sobre la actualización del
+                                marco jurídico local.</p>
+                            <a href="BOLETINES DE DIPUTADOS BAJA/JOSE SAMANIEGO/16 DE JULIO 2025.pdf" target="_blank"
+                                class="text-dorado-dark font-bold hover:underline flex items-center">Leer documento
+                                completo →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="exp-evangelina" class="expediente-item hidden">
+                    <div class="bg-white rounded-3xl shadow-2xl overflow-hidden mb-8 border border-gray-100">
+                        <div class="grid grid-cols-1 lg:grid-cols-12">
+                            <div
+                                class="lg:col-span-4 bg-gradient-to-b from-gray-50 to-gray-100 border-r border-gray-200 p-8">
+                                <div class="relative text-center mb-8">
+                                    <div class="relative inline-block">
+                                        <div class="absolute inset-0 bg-guinda rounded-full blur-md opacity-20"></div>
+                                        <img src="static/evangelina.png"
+                                            class="relative w-48 h-48 mx-auto rounded-full border-4 border-white shadow-xl object-cover z-10">
+                                        <div class="absolute bottom-2 right-4 z-20 bg-white p-1 rounded-lg shadow-md">
+                                            <img src="static/morena.png" alt="Morena" class="w-12 h-auto">
+                                        </div>
+                                    </div>
+                                    <h2 class="font-serif text-2xl font-bold text-guinda mt-6 leading-tight">Dip.
+                                        Evangelina Moreno Guerra</h2>
+                                    <p class="text-dorado-dark font-semibold text-sm uppercase tracking-wider mt-1">
+                                        Distrito IX - Tijuana</p>
+                                </div>
+                                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 space-y-4">
+                                    <div class="flex items-center group">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-guinda/10 flex items-center justify-center mr-3 text-guinda">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Elección</p>
+                                            <p class="font-medium text-gray-800">Mayoría Relativa</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center group">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-guinda/10 flex items-center justify-center mr-3 text-guinda">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Especialidad</p>
+                                            <p class="font-medium text-gray-800">Derechos Laborales</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-8 p-8 md:p-10 bg-white">
+                                <div class="mb-8">
+                                    <h3 class="font-serif text-xl font-bold text-guinda mb-6 flex items-center">
+                                        <span class="w-2 h-8 bg-dorado rounded-full mr-3"></span>Comisiones
+                                    </h3>
+                                    <div class="flex flex-wrap gap-4">
+                                        <div
+                                            class="bg-pearl border border-dorado/20 px-5 py-3 rounded-xl flex items-center">
+                                            <span class="text-2xl mr-3">👷‍♀️</span>
+                                            <div>
+                                                <p class="text-xs text-gray-500 uppercase font-bold">Secretaria</p>
+                                                <p class="font-bold text-guinda">Comisión de Trabajo</p>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="bg-pearl border border-dorado/20 px-5 py-3 rounded-xl flex items-center">
+                                            <span class="text-2xl mr-3">🏥</span>
+                                            <div>
+                                                <p class="text-xs text-gray-500 uppercase font-bold">Integrante</p>
+                                                <p class="font-bold text-guinda">Seguridad Social</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                                    <div class="bg-guinda/5 p-4 rounded-xl text-center"><span
+                                            class="block text-3xl font-serif font-bold text-guinda mb-1">34</span><span
+                                            class="text-xs text-gray-600 uppercase font-bold">Boletines</span></div>
+                                    <div class="bg-dorado/10 p-4 rounded-xl text-center"><span
+                                            class="block text-3xl font-serif font-bold text-dorado-dark mb-1">10+</span><span
+                                            class="text-xs text-gray-600 uppercase font-bold">Iniciativas</span></div>
+                                    <div class="bg-gray-50 p-4 rounded-xl text-center"><span
+                                            class="block text-3xl font-serif font-bold text-gray-700 mb-1">98%</span><span
+                                            class="text-xs text-gray-600 uppercase font-bold">Asistencia</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold text-guinda mb-6 border-b border-gray-200 pb-2">Destacados
+                        Recientes</h3>
+                    <div class="grid grid-cols-1 gap-6 mb-8">
+                        <div
+                            class="elegant-card bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex flex-col md:flex-row justify-between items-center">
+                            <div class="mb-3 md:mb-0">
+                                <span class="text-xs font-bold bg-guinda text-white px-2 py-1 rounded">29 OCT
+                                    2025</span>
+                                <span class="ml-2 font-serif font-bold text-gray-800 text-lg">Actividad Legislativa -
+                                    Octubre</span>
+                            </div>
+                            <a href="BOLETINES DE DIPUTADOS BAJA/EVANGELINA ELIZONDO/29 DE OCTUBRE 2025.pdf"
+                                class="text-guinda hover:text-dorado font-bold flex items-center">Ver PDF <span
+                                    class="ml-1 text-xl">→</span></a>
+                        </div>
+                        <div
+                            class="elegant-card bg-white p-5 rounded-xl border border-gray-100 shadow-sm flex flex-col md:flex-row justify-between items-center">
+                            <div class="mb-3 md:mb-0">
+                                <span class="text-xs font-bold bg-guinda text-white px-2 py-1 rounded">03 NOV
+                                    2025</span>
+                                <span class="ml-2 font-serif font-bold text-gray-800 text-lg">Informe de
+                                    Noviembre</span>
+                            </div>
+                            <a href="BOLETINES DE DIPUTADOS BAJA/EVANGELINA ELIZONDO/03 DE NOVIEMBRE 2025.pdf"
+                                class="text-guinda hover:text-dorado font-bold flex items-center">Ver PDF <span
+                                    class="ml-1 text-xl">→</span></a>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                        <h4 class="font-bold text-gray-500 uppercase mb-4 text-sm tracking-wide">Historial Completo de
+                            Boletines</h4>
+                        <div class="h-64 overflow-y-auto pr-2 space-y-3 custom-scrollbar">
+                            <a href="BOLETINES DE DIPUTADOS BAJA/EVANGELINA ELIZONDO/08 DE AGOSTO 2025-1.pdf"
+                                class="block bg-white p-3 rounded-lg border hover:border-dorado transition-colors flex justify-between"><span
+                                    class="text-sm font-medium text-gray-700">08 DE AGOSTO 2025-1</span><span
+                                    class="text-xs text-guinda font-bold">Descargar</span></a>
+                            <a href="BOLETINES DE DIPUTADOS BAJA/EVANGELINA ELIZONDO/09 DE SEPTIEMBRE 2025.pdf"
+                                class="block bg-white p-3 rounded-lg border hover:border-dorado transition-colors flex justify-between"><span
+                                    class="text-sm font-medium text-gray-700">09 DE SEPTIEMBRE 2025</span><span
+                                    class="text-xs text-guinda font-bold">Descargar</span></a>
+                            <a href="BOLETINES DE DIPUTADOS BAJA/EVANGELINA ELIZONDO/10 DE OCTUBRE 2025.pdf"
+                                class="block bg-white p-3 rounded-lg border hover:border-dorado transition-colors flex justify-between"><span
+                                    class="text-sm font-medium text-gray-700">10 DE OCTUBRE 2025</span><span
+                                    class="text-xs text-guinda font-bold">Descargar</span></a>
+                            <a href="BOLETINES DE DIPUTADOS BAJA/EVANGELINA ELIZONDO/25 DE SEPTIEMBRE 2025.pdf"
+                                class="block bg-white p-3 rounded-lg border hover:border-dorado transition-colors flex justify-between"><span
+                                    class="text-sm font-medium text-gray-700">25 DE SEPTIEMBRE 2025</span><span
+                                    class="text-xs text-guinda font-bold">Descargar</span></a>
+                            <a href="BOLETINES DE DIPUTADOS BAJA/EVANGELINA ELIZONDO/04 FEBRERO 2025.pdf"
+                                class="block bg-white p-3 rounded-lg border hover:border-dorado transition-colors flex justify-between"><span
+                                    class="text-sm font-medium text-gray-700">04 FEBRERO 2025</span><span
+                                    class="text-xs text-guinda font-bold">Descargar</span></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="exp-fernando" class="expediente-item hidden">
+                    <div class="bg-white rounded-3xl shadow-2xl overflow-hidden mb-8 border border-gray-100">
+                        <div class="grid grid-cols-1 lg:grid-cols-12">
+                            <div
+                                class="lg:col-span-4 bg-gradient-to-b from-gray-50 to-gray-100 border-r border-gray-200 p-8">
+                                <div class="relative text-center mb-8">
+                                    <div class="relative inline-block">
+                                        <div class="absolute inset-0 bg-guinda rounded-full blur-md opacity-20"></div>
+                                        <img src="static/trenti.png"
+                                            class="relative w-48 h-48 mx-auto rounded-full border-4 border-white shadow-xl object-cover z-10">
+                                        <div class="absolute bottom-2 right-4 z-20 bg-white p-1 rounded-lg shadow-md">
+                                            <img src="static/morena.png" alt="Morena" class="w-12 h-auto">
+                                        </div>
+                                    </div>
+                                    <h2 class="font-serif text-2xl font-bold text-guinda mt-6 leading-tight">Dip.
+                                        Fernando Jorge Castro Trenti</h2>
+                                    <p class="text-dorado-dark font-semibold text-sm uppercase tracking-wider mt-1">
+                                        Distrito I - Baja California</p>
+                                </div>
+                                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 space-y-4">
+                                    <h3 class="text-xs font-bold text-gray-400 uppercase border-b border-gray-100 pb-2">
+                                        Datos Generales</h3>
+                                    <div class="flex items-center group">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-guinda/10 flex items-center justify-center mr-3 text-guinda">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Fecha de Nacimiento</p>
+                                            <p class="font-medium text-gray-800">14/11/1955</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center group">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-guinda/10 flex items-center justify-center mr-3 text-guinda">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Tipo de Elección</p>
+                                            <p class="font-medium text-gray-800">Representación Proporcional</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center group">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-guinda/10 flex items-center justify-center mr-3 text-guinda">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div class="overflow-hidden">
+                                            <p class="text-xs text-gray-500">Correo Electrónico</p>
+                                            <p class="font-medium text-gray-800 text-xs truncate">
+                                                fernando.castro@diputados.gob.mx</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-6">
+                                    <button
+                                        class="w-full bg-guinda hover:bg-guinda-dark text-white font-medium py-3 px-4 rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl flex justify-center items-center">
+                                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                            </path>
+                                        </svg>
+                                        Ver Curriculum Vitae
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-8 p-8 md:p-10 bg-white">
+                                <div class="mb-10">
+                                    <h3 class="font-serif text-xl font-bold text-guinda mb-6 flex items-center">
+                                        <span class="w-2 h-8 bg-dorado rounded-full mr-3"></span>Comisiones y Comités
+                                        Legislativos
+                                    </h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div class="bg-pearl p-6 rounded-2xl border border-dorado/20">
+                                            <h4 class="text-sm font-bold text-gray-500 uppercase mb-4 tracking-wide">
+                                                Comisiones Ordinarias</h4>
+                                            <ul class="space-y-3">
+                                                <li class="flex items-center"><span
+                                                        class="w-2 h-2 bg-guinda rounded-full mr-3"></span><span
+                                                        class="font-medium text-gray-800">Salud</span></li>
+                                                <li class="flex items-center"><span
+                                                        class="w-2 h-2 bg-guinda rounded-full mr-3"></span><span
+                                                        class="font-medium text-gray-800">Marina</span></li>
+                                                <li class="flex items-center"><span
+                                                        class="w-2 h-2 bg-guinda rounded-full mr-3"></span><span
+                                                        class="font-medium text-gray-800">Hacienda y Crédito
+                                                        Público</span></li>
+                                            </ul>
+                                        </div>
+                                        <div class="bg-pearl p-6 rounded-2xl border border-dorado/20">
+                                            <h4 class="text-sm font-bold text-gray-500 uppercase mb-4 tracking-wide">
+                                                Comités</h4>
+                                            <ul class="space-y-3">
+                                                <li class="flex items-center"><span
+                                                        class="w-2 h-2 bg-dorado-dark rounded-full mr-3"></span><span
+                                                        class="font-medium text-gray-800">Administración</span></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mb-10">
+                                    <h4 class="text-sm font-bold text-gray-500 uppercase mb-4 tracking-wide">Grupos de
+                                        Amistad</h4>
+                                    <div class="flex flex-wrap gap-3">
+                                        <span
+                                            class="inline-flex items-center px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">🇮🇹
+                                            República Italiana</span>
+                                        <span
+                                            class="inline-flex items-center px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">🇿🇦
+                                            República de Sudáfrica</span>
+                                        <span
+                                            class="inline-flex items-center px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">🇸🇬
+                                            República de Singapur</span>
+                                        <span
+                                            class="inline-flex items-center px-4 py-2 rounded-lg bg-gray-50 border border-gray-200 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors">🇺🇸
+                                            Estados Unidos de América</span>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                                    <div
+                                        class="group cursor-pointer bg-green-50 hover:bg-green-100 border border-green-200 p-4 rounded-xl transition-all duration-300 relative overflow-hidden">
+                                        <div class="relative z-10">
+                                            <h5 class="font-bold text-green-800 text-lg mb-1">Iniciativas Presentadas
+                                            </h5>
+                                            <p class="text-green-600 text-sm flex items-center">Ir a las iniciativas →
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="group cursor-pointer bg-green-50 hover:bg-green-100 border border-green-200 p-4 rounded-xl transition-all duration-300 relative overflow-hidden">
+                                        <div class="relative z-10">
+                                            <h5 class="font-bold text-green-800 text-lg mb-1">Proposiciones</h5>
+                                            <p class="text-green-600 text-sm flex items-center">Ir a las proposiciones →
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div
+                                        class="group cursor-pointer bg-blue-50 hover:bg-blue-100 border border-blue-200 p-4 rounded-xl transition-all duration-300">
+                                        <h5 class="font-bold text-blue-800 text-lg mb-1">Asistencias</h5>
+                                        <p class="text-blue-600 text-sm flex items-center">Ver registro de asistencias
+                                        </p>
+                                    </div>
+                                    <div
+                                        class="group cursor-pointer bg-blue-50 hover:bg-blue-100 border border-blue-200 p-4 rounded-xl transition-all duration-300">
+                                        <h5 class="font-bold text-blue-800 text-lg mb-1">Votaciones</h5>
+                                        <p class="text-blue-600 text-sm flex items-center">Historial de votaciones</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h3
+                            class="font-serif text-2xl font-bold text-guinda mb-6 text-center border-b border-gray-200 pb-4">
+                            Archivo de Boletines Legislativos</h3>
+                        <div class="grid grid-cols-1 gap-6">
+                            <div
+                                class="elegant-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="flex flex-col md:flex-row justify-between md:items-center">
+                                    <div class="mb-4 md:mb-0">
+                                        <div class="flex items-center mb-2"><span
+                                                class="bg-guinda/10 text-guinda text-xs font-bold px-2 py-1 rounded uppercase mr-2">Boletín</span><span
+                                                class="text-gray-400 text-sm">04 de Febrero</span></div>
+                                        <h4 class="font-serif text-lg font-bold text-gray-800 mb-1">Grupo Plural de
+                                            Legisladores</h4>
+                                        <p class="text-gray-600 text-sm leading-relaxed max-w-2xl">Creación de un grupo
+                                            plural de legisladores para promover reformas en materia de cuidados.</p>
+                                    </div>
+                                    <a href="BOLETINES DE DIPUTADOS BAJA/CASTRO TRENTI/04 DE FEBRERO.pdf"
+                                        target="_blank" rel="noopener noreferrer"
+                                        class="elegant-btn gold-btn whitespace-nowrap flex items-center justify-center"><svg
+                                            class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
+                                            </path>
+                                        </svg>Descargar PDF</a>
+                                </div>
+                            </div>
+                            <div
+                                class="elegant-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="flex flex-col md:flex-row justify-between md:items-center">
+                                    <div class="mb-4 md:mb-0">
+                                        <div class="flex items-center mb-2"><span
+                                                class="bg-guinda/10 text-guinda text-xs font-bold px-2 py-1 rounded uppercase mr-2">Boletín</span><span
+                                                class="text-gray-400 text-sm">08 de Octubre 2025</span></div>
+                                        <h4 class="font-serif text-lg font-bold text-gray-800 mb-1">Tratamientos
+                                            Farmacológicos</h4>
+                                        <p class="text-gray-600 text-sm leading-relaxed max-w-2xl">Tratamientos
+                                            farmacológicos de obesidad en el cuadro básico de salud.</p>
+                                    </div>
+                                    <a href="BOLETINES DE DIPUTADOS BAJA/CASTRO TRENTI/08 DE OCTUBRE 2025.pdf"
+                                        target="_blank" rel="noopener noreferrer"
+                                        class="elegant-btn gold-btn whitespace-nowrap flex items-center justify-center"><svg
+                                            class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
+                                            </path>
+                                        </svg>Descargar PDF</a>
+                                </div>
+                            </div>
+                            <div
+                                class="elegant-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="flex flex-col md:flex-row justify-between md:items-center">
+                                    <div class="mb-4 md:mb-0">
+                                        <div class="flex items-center mb-2"><span
+                                                class="bg-guinda/10 text-guinda text-xs font-bold px-2 py-1 rounded uppercase mr-2">Boletín</span><span
+                                                class="text-gray-400 text-sm">17 de Marzo 2025</span></div>
+                                        <h4 class="font-serif text-lg font-bold text-gray-800 mb-1">Igualdad Sustantiva
+                                            Laboral</h4>
+                                        <p class="text-gray-600 text-sm leading-relaxed max-w-2xl">Barreras que impiden
+                                            la igualdad sustantiva en el mundo laboral.</p>
+                                    </div>
+                                    <a href="BOLETINES DE DIPUTADOS BAJA/CASTRO TRENTI/17 DE MARZO 2025.pdf"
+                                        target="_blank" rel="noopener noreferrer"
+                                        class="elegant-btn gold-btn whitespace-nowrap flex items-center justify-center"><svg
+                                            class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
+                                            </path>
+                                        </svg>Descargar PDF</a>
+                                </div>
+                            </div>
+                            <div
+                                class="elegant-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="flex flex-col md:flex-row justify-between md:items-center">
+                                    <div class="mb-4 md:mb-0">
+                                        <div class="flex items-center mb-2"><span
+                                                class="bg-guinda/10 text-guinda text-xs font-bold px-2 py-1 rounded uppercase mr-2">Boletín</span><span
+                                                class="text-gray-400 text-sm">19 de Marzo 2025</span></div>
+                                        <h4 class="font-serif text-lg font-bold text-gray-800 mb-1">Simplificación
+                                            Administrativa</h4>
+                                        <p class="text-gray-600 text-sm leading-relaxed max-w-2xl">Reforma en materia de
+                                            simplificación administrativa y digitalización.</p>
+                                    </div>
+                                    <a href="BOLETINES DE DIPUTADOS BAJA/CASTRO TRENTI/19 DE MARZO 2025.pdf"
+                                        target="_blank" rel="noopener noreferrer"
+                                        class="elegant-btn gold-btn whitespace-nowrap flex items-center justify-center"><svg
+                                            class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
+                                            </path>
+                                        </svg>Descargar PDF</a>
+                                </div>
+                            </div>
+                            <div
+                                class="elegant-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <div class="flex flex-col md:flex-row justify-between md:items-center">
+                                    <div class="mb-4 md:mb-0">
+                                        <div class="flex items-center mb-2"><span
+                                                class="bg-guinda/10 text-guinda text-xs font-bold px-2 py-1 rounded uppercase mr-2">Boletín</span><span
+                                                class="text-gray-400 text-sm">21 de Octubre 2025</span></div>
+                                        <h4 class="font-serif text-lg font-bold text-gray-800 mb-1">Reforma Ley Aduanera
+                                        </h4>
+                                        <p class="text-gray-600 text-sm leading-relaxed max-w-2xl">Reforma a la Ley
+                                            Aduanera busca transparencia, mayor recaudación y combate al contrabando.
+                                        </p>
+                                    </div>
+                                    <a href="BOLETINES DE DIPUTADOS BAJA/CASTRO TRENTI/21 DE OCTUBRE 2025.pdf"
+                                        target="_blank" rel="noopener noreferrer"
+                                        class="elegant-btn gold-btn whitespace-nowrap flex items-center justify-center"><svg
+                                            class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
+                                            </path>
+                                        </svg>Descargar PDF</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="exp-rocio" class="expediente-item hidden">
+                    <div class="bg-white rounded-3xl shadow-2xl overflow-hidden mb-8 border border-gray-100">
+                        <div class="grid grid-cols-1 lg:grid-cols-12">
+                            <div
+                                class="lg:col-span-4 bg-gradient-to-b from-gray-50 to-gray-100 border-r border-gray-200 p-8">
+                                <div class="relative text-center mb-8">
+                                    <div class="relative inline-block">
+                                        <div class="absolute inset-0 bg-guinda rounded-full blur-md opacity-20"></div>
+                                        <img src="static/rocio.png"
+                                            class="relative w-48 h-48 mx-auto rounded-full border-4 border-white shadow-xl object-cover z-10">
+                                        <div class="absolute bottom-2 right-4 z-20 bg-white p-1 rounded-lg shadow-md">
+                                            <img src="static/morena.png" alt="Morena" class="w-12 h-auto">
+                                        </div>
+                                    </div>
+                                    <h2 class="font-serif text-2xl font-bold text-guinda mt-6 leading-tight">Dip. Rocío
+                                        López Gorosave</h2>
+                                    <p class="text-dorado-dark font-semibold text-sm uppercase tracking-wider mt-1">
+                                        Distrito XV - Ensenada</p>
+                                </div>
+                                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-200 space-y-4">
+                                    <h3 class="text-xs font-bold text-gray-400 uppercase border-b border-gray-100 pb-2">
+                                        Perfil Profesional</h3>
+                                    <div class="flex items-center group">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center mr-3 text-green-700">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Formación</p>
+                                            <p class="font-medium text-gray-800">Ciencias de la Comunicación</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center group">
+                                        <div
+                                            class="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center mr-3 text-green-700">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                                </path>
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-gray-500">Enfoque</p>
+                                            <p class="font-medium text-gray-800">Sustentabilidad</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:col-span-8 p-8 md:p-10 bg-white">
+                                <div class="mb-10">
+                                    <h3 class="font-serif text-xl font-bold text-guinda mb-6 flex items-center">
+                                        <span class="w-2 h-8 bg-dorado rounded-full mr-3"></span>Comisiones
+                                    </h3>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div class="bg-green-50 p-6 rounded-2xl border border-green-100">
+                                            <h4
+                                                class="text-sm font-bold text-green-800 uppercase mb-2 flex items-center">
+                                                <span class="mr-2">🌱</span> Medio Ambiente</h4>
+                                            <p class="text-sm text-green-700">Impulso a leyes para la protección de
+                                                reservas naturales y gestión de residuos.</p>
+                                        </div>
+                                        <div class="bg-blue-50 p-6 rounded-2xl border border-blue-100">
+                                            <h4
+                                                class="text-sm font-bold text-blue-800 uppercase mb-2 flex items-center">
+                                                <span class="mr-2">💧</span> Recursos Hidráulicos</h4>
+                                            <p class="text-sm text-blue-700">Gestión eficiente del agua e
+                                                infraestructura hídrica para Ensenada.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between bg-gray-50 p-6 rounded-2xl">
+                                    <div>
+                                        <h5 class="font-bold text-gray-800">Oficina de Enlace</h5>
+                                        <p class="text-sm text-gray-600">Av. Reforma #123, Ensenada, B.C.</p>
+                                    </div>
+                                    <button
+                                        class="bg-guinda text-white px-6 py-2 rounded-full font-bold hover:bg-guinda-dark transition-colors">Contactar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                        <h3
+                            class="font-serif text-2xl font-bold text-guinda mb-6 text-center border-b border-gray-200 pb-4">
+                            Actividades Legislativas</h3>
+                        <div
+                            class="elegant-card bg-white p-6 rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                            <div class="flex flex-col md:flex-row justify-between md:items-center">
+                                <div class="mb-4 md:mb-0">
+                                    <div class="flex items-center mb-2"><span
+                                            class="bg-dorado text-white text-xs font-bold px-2 py-1 rounded uppercase mr-2">Competitividad</span><span
+                                            class="text-gray-400 text-sm">03 de Mayo 2025</span></div>
+                                    <h4 class="font-serif text-lg font-bold text-gray-800 mb-1">Inclusión de
+                                        Emprendedoras</h4>
+                                    <p class="text-gray-600 text-sm leading-relaxed max-w-2xl">Incorporación de las
+                                        mujeres, jóvenes y personas con discapacidad emprendedoras en las políticas de
+                                        competitividad.</p>
+                                </div>
+                                <a href="BOLETINES DE DIPUTADOS BAJA/ROCIO GOROSAVE/03 DE MAYO 2025.pdf" target="_blank"
+                                    rel="noopener noreferrer"
+                                    class="elegant-btn gold-btn whitespace-nowrap flex items-center justify-center"><svg
+                                        class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                    </svg>Descargar PDF</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- EVENTOS SECTION -->
+            <section id="eventos" class="section-content hidden">
+                <h2 class="section-title">Eventos y Actividades</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                    <div class="elegant-card bg-white rounded-2xl overflow-hidden slide-up stagger-1">
+                        <div class="h-40 md:h-48 overflow-hidden">
+                            <img src="static/foro_salud.png" alt="Imagen del Foro de Salud Pública en Baja California"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 md:p-6">
+                            <h3 class="font-serif text-lg md:text-xl font-bold text-guinda mb-3">
+                                Foro "Salud Pública en Baja California"
+                            </h3>
+                            <div class="space-y-2 text-sm text-gray-600 mb-4">
+                                <p><span class="font-semibold text-guinda">Fecha:</span> 20 de Enero, 2024</p>
+                                <p><span class="font-semibold text-guinda">Lugar:</span> Centro de Convenciones, Tijuana
+                                </p>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-4">
+                                Evento organizado por la Dip. Nancy Guadalupe Sánchez Arredondo para analizar los retos
+                                del sistema de salud estatal con especialistas nacionales.
+                            </p>
+                            <button class="elegant-btn w-full">Ver Galería</button>
+                        </div>
+                    </div>
+
+                    <div class="elegant-card bg-white rounded-2xl overflow-hidden slide-up stagger-2">
+                        <div class="h-40 md:h-48 overflow-hidden">
+                            <img src="static/gira_agricola.png" alt="Imagen de la Gira de Trabajo en Valle de Mexicali"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 md:p-6">
+                            <h3 class="font-serif text-lg md:text-xl font-bold text-guinda mb-3">
+                                Gira de Trabajo en Valle de Mexicali
+                            </h3>
+                            <div class="space-y-2 text-sm text-gray-600 mb-4">
+                                <p><span class="font-semibold text-guinda">Fecha:</span> 18 de Enero, 2024</p>
+                                <p><span class="font-semibold text-guinda">Lugar:</span> Valle de Mexicali</p>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-4">
+                                El Dip. Gilberto Herrera Solórzano realizó recorrido por zonas agrícolas
+                                para evaluar necesidades de infraestructura de riego.
+                            </p>
+                            <button class="elegant-btn w-full">Ver Galería</button>
+                        </div>
+                    </div>
+
+                    <div class="elegant-card bg-white rounded-2xl overflow-hidden slide-up stagger-3">
+                        <div class="h-40 md:h-48 overflow-hidden">
+                            <img src="static/mesa.png" alt="Imagen de la Reunión con Sector Empresarial"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-4 md:p-6">
+                            <h3 class="font-serif text-lg md:text-xl font-bold text-guinda mb-3">
+                                Reunión con Sector Empresarial
+                            </h3>
+                            <div class="space-y-2 text-sm text-gray-600 mb-4">
+                                <p><span class="font-semibold text-guinda">Fecha:</span> 15 de Enero, 2024</p>
+                                <p><span class="font-semibold text-guinda">Lugar:</span> Cámara de Comercio, Ensenada
+                                </p>
+                            </div>
+                            <p class="text-gray-700 text-sm mb-4">
+                                La Dip. Claudia Lisbeth Moreno Ramírez encabezó mesa de diálogo con empresarios
+                                para discutir reformas fiscales y apoyo a PyMEs.
+                            </p>
+                            <button class="elegant-btn w-full">Ver Galería</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <div class="h-1.5 bg-gradient-to-r from-guinda via-dorado to-guinda"></div>
+
+        <!-- ELEGANT FOOTER -->
+        <div id="footer-placeholder"></div>
+
+
+    </div> <!-- End main-content -->
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        // Navigation functionality with enhanced transitions
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section-content');
+            sections.forEach(section => {
+                section.classList.add('hidden');
+                section.style.opacity = '0';
+            });
+
+            // ESTA LÍNEA ES NUEVA:
+            document.getElementById('detalle-contenedor').classList.add('hidden');
+
+            const targetSection = document.getElementById(sectionId);
+            targetSection.classList.remove('hidden');
+            setTimeout(() => { targetSection.style.opacity = '1'; }, 50);
+
+            // Show selected section with delay for smooth transition
+            setTimeout(() => {
+                const targetSection = document.getElementById(sectionId);
+                targetSection.classList.remove('hidden');
+
+                // Trigger reflow
+                targetSection.offsetHeight;
+
+                // Animate in
+                targetSection.style.opacity = '1';
+                targetSection.style.transform = 'translateY(0)';
+
+                // Restart animations with staggered delays
+                const animatedElements = targetSection.querySelectorAll('.slide-up, .fade-in, .slide-in-left, .slide-in-right, .bounce-in');
+                animatedElements.forEach((element, index) => {
+                    element.style.animationDelay = `${index * 0.1}s`;
+                    element.style.animation = 'none';
+                    element.offsetHeight; // Trigger reflow
+                    element.style.animation = null;
+                });
+
+                // Restart counters if showing inicio
+                if (sectionId === 'inicio') {
+                    setTimeout(startCounters, 500);
+                }
+
+                // Initialize scroll animations for new section
+                revealOnScroll();
+            }, 350);
+
+            // Update navigation active state
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Add active class to clicked nav
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+        }
+
+        // Counter animation
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const startTime = performance.now();
+
+            function updateCounter(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(easeOutCubic * target);
+
+                element.textContent = current;
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            }
+
+            requestAnimationFrame(updateCounter);
+        }
+
+        function startCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach((counter, index) => {
+                const target = parseInt(counter.getAttribute('data-target'));
+                setTimeout(() => {
+                    animateCounter(counter, target);
+                }, index * 200);
+            });
+        }
+
+        // Typewriter effect
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '<span class="cursor">|</span>';
+
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML = text.slice(0, i + 1) + '<span class="cursor">|</span>';
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    // Remove cursor after typing is complete
+                    setTimeout(() => {
+                        element.innerHTML = text;
+                    }, 1000);
+                }
+            }
+            type();
+        }
+
+        // Enhanced scroll reveal animations
+        function revealOnScroll() {
+            const reveals = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-scale');
+
+            reveals.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('revealed');
+                }
+            });
+        }
+
+        // Loading screen sequence
+        function startLoadingSequence() {
+            const typewriterText = document.getElementById('typewriter-text');
+            const subtitleText = document.getElementById('subtitle-text');
+            const loadingScreen = document.getElementById('loading-screen');
+            const mainContent = document.getElementById('main-content');
+
+            // Start typewriter effect
+            setTimeout(() => {
+                typeWriter(typewriterText, 'Diputadas y Diputados Federales\nBaja California', 80);
+            }, 500);
+
+            // Show subtitle
+            setTimeout(() => {
+                subtitleText.style.opacity = '1';
+                subtitleText.style.transform = 'translateY(0)';
+            }, 4500);
+
+            // Hide loading screen and show main content
+            setTimeout(() => {
+                loadingScreen.classList.add('screen-fade-out');
+
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                    mainContent.style.opacity = '1';
+                    mainContent.classList.add('main-content-fade-in');
+
+                    // Start counters after main content is visible
+                    setTimeout(startCounters, 800);
+
+                    // Initialize scroll animations
+                    revealOnScroll();
+                }, 1000);
+            }, 6000);
+        }
+
+        // Initialize page
+        // --- CÓDIGO ACTUALIZADO PARA OMITIR LA ANIMACIÓN DE CARGA ---
+
+        // Nueva función para saltarse la animación
+        function skipLoadingSequence() {
+            const loadingScreen = document.getElementById('loading-screen');
+            const mainContent = document.getElementById('main-content');
+
+            // Oculta la pantalla de carga y muestra el contenido principal inmediatamente
+            loadingScreen.style.display = 'none';
+            mainContent.style.opacity = '1';
+
+            // Inicia los contadores y las animaciones de scroll sin demora
+            startCounters();
+            revealOnScroll();
+        }
+
+        // Lógica de inicialización de la página
+        document.addEventListener('DOMContentLoaded', function () {
+            // Revisa si ya hemos dejado una "marca" en la memoria de la sesión
+            if (sessionStorage.getItem('hasVisitedBefore')) {
+                // Si la marca existe, nos saltamos la animación
+                skipLoadingSequence();
+            } else {
+                // Si es la primera vez, ejecutamos la animación completa
+                startLoadingSequence();
+                // Y dejamos la marca para que no se vuelva a mostrar
+                sessionStorage.setItem('hasVisitedBefore', 'true');
+            }
+            
+
+            // El listener para el scroll se mantiene igual
+            window.addEventListener('scroll', revealOnScroll);
+
+            // Las clases de scroll reveal también se mantienen (no es necesario repetirlas aquí)
+            const slideUpElements = document.querySelectorAll('.slide-up');
+            slideUpElements.forEach(el => el.classList.add('scroll-reveal'));
+            const slideLeftElements = document.querySelectorAll('.slide-in-left');
+            slideLeftElements.forEach(el => el.classList.add('scroll-reveal-left'));
+            const slideRightElements = document.querySelectorAll('.slide-in-right');
+            slideRightElements.forEach(el => el.classList.add('scroll-reveal-right'));
+            const bounceElements = document.querySelectorAll('.bounce-in');
+            bounceElements.forEach(el => el.classList.add('scroll-scale'));
+        });
+    </script>
+    <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'98b328c0e54c5cc2',t:'MTc1OTkwMDUxMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    <footer class="bg-guinda-dark text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+
+            <div
+                class="flex flex-col md:flex-row justify-between items-center md:items-start border-b border-white/20 pb-8 mb-8">
+
+                <div class="flex items-start space-x-4 mb-6 md:mb-0 max-w-sm">
+                    <div class="bg-white rounded-lg p-2 flex-shrink-0 mt-1">
+                        <img src="static/escudo.png" alt="Escudo Cámara de Diputados" class="w-14 h-14">
+                    </div>
+                    <div>
+                        <h3 class="font-serif text-2xl font-extrabold leading-tight">LXVI Legislatura</h3>
+                        <p class="font-bold text-lg text-dorado-light">Baja California</p>
+                        <p class="text-xs text-gray-300 mt-2">
+                            Representando con honor y compromiso los intereses de Baja California en el Congreso de la
+                            Unión.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-3 flex items-center justify-center w-28 h-28 flex-shrink-0">
+                    <img src="static/morena.png" alt="Logo de Morena" class="object-contain w-full h-full">
+                </div>
+
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+
+                <div>
+                    <h4 class="font-bold text-sm text-dorado-light mb-4 uppercase tracking-wider">Enlaces Rápidos</h4>
+                    <div class="space-y-2">
+                        <a href="index.html#inicio"
+                            class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Inicio
+                        </a>
+                        <a href="index.html#diputadas"
+                            class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Diputadas y Diputados
+                        </a>
+                        <a href="index.html#boletines"
+                            class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Boletines
+                        </a>
+                        <a href="index.html#eventos"
+                            class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Eventos
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm text-dorado-light mb-4 uppercase tracking-wider">Sitios de Interés</h4>
+                    <div class="space-y-2">
+                        <a href="https://www.diputados.gob.mx/" target="_blank" rel="noopener noreferrer"
+                            class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Cámara de Diputados
+                        </a>
+                        <a href="http://sil.gobernacion.gob.mx/" target="_blank" rel="noopener noreferrer"
+                            class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Congreso de la Unión
+                        </a>
+                        <a href="https://www.gob.mx/" target="_blank" rel="noopener noreferrer"
+                            class="block text-sm text-gray-300 hover:text-dorado-light transition-colors">
+                            Gobierno de México
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-span-2 md:col-span-1">
+                    <h4 class="font-bold text-sm text-dorado-light mb-4 uppercase tracking-wider">Sede Legislativa</h4>
+                    <div class="space-y-1 text-sm text-gray-300">
+                        <p>Av. Congreso de la Unión No. 66</p>
+                        <p>Col. El Parque, C.P. 15960</p>
+                        <p>Alcaldía Venustiano Carranza, CDMX</p>
+                        <p class="font-semibold pt-2">Tel: (55) 5036 0000</p>
+                    </div>
+                </div>
+
+                <div class="col-span-2 md:col-span-1">
+                    <h4 class="font-bold text-sm text-dorado-light mb-4 uppercase tracking-wider">Síguenos</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" aria-label="Síguenos en X"
+                            class="text-gray-300 hover:text-dorado-light transition-colors">
+                            <span class="icon-placeholder"></span>
+                        </a>
+                        <a href="#" aria-label="Síguenos en Facebook"
+                            class="text-gray-300 hover:text-dorado-light transition-colors">
+                            <span class="icon-placeholder"></span>
+                        </a>
+                        <a href="#" aria-label="Síguenos en Instagram"
+                            class="text-gray-300 hover:text-dorado-light transition-colors">
+                            <span class="icon-placeholder"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center pt-8 mt-8 border-t border-white/20">
+                <p class="text-xs text-gray-400">
+                    &copy; 2025 Diputados Federales de Baja California - LXVI Legislatura. Todos los derechos
+                    reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <script>
+
+        function verDetalle(id) {
+            document.getElementById('boletines').classList.add('hidden');
+            document.getElementById('detalle-contenedor').classList.remove('hidden');
+            document.querySelectorAll('.expediente-item').forEach(e => e.classList.add('hidden'));
+            const exp = document.getElementById('exp-' + id);
+            if (exp) exp.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function regresarAlDirectorio() {
+            document.getElementById('detalle-contenedor').classList.add('hidden');
+            document.getElementById('boletines').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+    </script>
+</body>
+
+</html>
